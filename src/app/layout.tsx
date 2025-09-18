@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased bg-stone-300 text-stone-900 ${raleway.variable} font-sans`}>{children}</body>
+      <body className={`antialiased bg-stone-200 text-stone-900 ${raleway.variable} font-sans`}>{children}</body>
     </html>
   );
 }

@@ -24,7 +24,7 @@ const Hero: FC = () => {
         {/* Text at bottom-left */}
         <div className="absolute bottom-24 left-4 md:left-8 lg:left-12 max-w-[90%] md:max-w-[80%]">
           <h1 className="text-5xl md:text-6xl lg:text-7xl text-white font-light leading-[1.2] md:leading-[1.3] lg:leading-[1.4]">
-            <span className="text-[#ffc400] font-normal">ROAR </span>
+            <span className="bg-gradient-to-r from-[#ffd000] via-[#ff9900] to-[#ffc800] bg-clip-text text-transparent font-normal">ROAR </span>
             - Your Growth Partner. <br /> A one-stop Solution.
           </h1>
         </div>
