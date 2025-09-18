@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const navItems = [
@@ -30,11 +31,11 @@ const Header: FC = () => {
       <div className="container !max-w-full">
         <div className="flex justify-between h-20 items-center">
           <div>
-            <a href="/">
+            <Link href="/">
               <span className="text-3xl font-medium uppercase text-white ">
                 Roar&nbsp; Industries
               </span>
-            </a>
+            </Link>
           </div>
           <div className="flex gap-4 items-center">
             <div className="size-8 border rounded-full inline-flex items-center justify-center bg-stone-300 transition-transform duration-300 hover:rotate-[270deg] active:scale-95 cursor-pointer">
