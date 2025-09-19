@@ -16,7 +16,7 @@ const Hero: FC = () => {
       </video>
        {/* Overlay for better text readability */}
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-80 z-10"></div>
-      <div className="relative h-screen">
+      <div className="relative h-[100dvh]">
       {/* <div className="h-2 bg-gradient-to-r from-[#ffc400] via-[#ff6a00] to-[#ff0000]"></div> */}
       
       {/* Wrapper for text and SVG */}
