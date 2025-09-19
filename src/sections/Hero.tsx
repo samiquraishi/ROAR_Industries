@@ -1,28 +1,6 @@
-"use client";
-import { FC, useEffect, useState } from "react";
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+import { FC } from "react";
 
 const Hero: FC = () => {
-  // Move these INSIDE the component function
-  const [viewportHeight, setViewportHeight] = useState("100vh");
-
-  useEffect(() => {
-    const updateHeight = () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-      setViewportHeight(`${window.innerHeight}px`);
-    };
-
-    window.addEventListener("resize", updateHeight);
-    window.addEventListener("orientationchange", updateHeight);
-    updateHeight();
-
-    return () => {
-      window.removeEventListener("resize", updateHeight);
-      window.removeEventListener("orientationchange", updateHeight);
-    };
-  }, []);
-
   return (
     <section className="pt-20">
       <video
@@ -34,13 +12,11 @@ const Hero: FC = () => {
       >
         <source src="/videos/2_roar.mp4" type="video/mp4" />
       </video>
-      {/* Overlay for better text readability */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-80 z-10"></div>
-      <div className="relative" style={{ height: viewportHeight }}>
-        {/* <div className="h-2 bg-gradient-to-r from-[#ffc400] via-[#ff6a00] to-[#ff0000]"></div> */}
 
-        {/* Wrapper for text and SVG */}
-        <div className="absolute bottom-0 left-0 w-full transform translate-y-[-10vh] z-20">
+      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-80 z-10"></div>
+
+      <div className="relative h-screen lg:h-[100dvh]">
+        <div className="absolute bottom-0 left-0 w-full transform -translate-y-20 z-20">
           {/* Text at bottom-left */}
           <div className="absolute bottom-24 left-4 md:left-8 lg:left-12 max-w-[90%] md:max-w-[80%]">
             <h1 className="text-5xl md:text-6xl lg:text-7xl text-white font-light leading-[1.2] md:leading-[1.3] lg:leading-[1.4]">
