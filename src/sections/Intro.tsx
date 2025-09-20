@@ -10,14 +10,13 @@ const Intro: FC = () => {
           <Image src = {lionicon} alt="Lion Logo" className="mx-auto mb-4 w-16 h-16" />          
         </div>
         <div className="px-3 sm:px-8 md:px-0 grid grid-cols-1 md:grid-cols-10 gap-8 md:gap-16 md:items-end">
-          {/* Heading Column - 4/10 ratio on medium+ */}
+          
           <div className="md:col-span-4">
             <h1 className="font-semibold md:font-normal text-center md:text-left text-[2.2rem] sm:text-[2.4rem] md:text-[5rem] lg:text-[6rem] xl:text-[6.5rem] leading-tight">
               Why choose us?
             </h1>
           </div>
 
-          {/* Paragraph Column - 6/10 ratio on medium+ */}
           <div
             className="md:col-span-6 bg-white p-5 xl:p-8 "
             style={{
