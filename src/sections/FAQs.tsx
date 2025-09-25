@@ -3,29 +3,62 @@ import { FC } from "react";
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const faqs = [
   {
-    question: "How long does it take to build a website?",
+    question: "What services does Roar Industries offer?",
     answer:
-      "It depends on the complexity of the website and the scope of the project.",
+      "We specialize in three core areas: Technology solutions including web and mobile applications, Media services for digital experiences and brand strategies, and Film Production for cinematic content and branded videos.",
   },
   {
-    question: "What is your development process like?",
+    question: "What is your project development process?",
     answer:
-      "I follow a hands-on approach starting with project planning, building out the core features, and regular check-ins to make sure everything matches your needs.",
+      "We follow a collaborative approach starting with discovery and strategy, followed by design and development phases, with regular client check-ins and feedback loops to ensure the final product exceeds your expectations.",
   },
   {
-    question: "Do you work with international clients?",
+    question: "What does it mean by 'Let's grow together'?",
     answer:
-      "Yes, I work with clients globally and can accommodate different time zones for meetings and communication.",
+      "This reflects our philosophy of building long-term partnerships with our clients. We don't just deliver a project and walk away, we're invested in your ongoing success, offering continued support, optimization, and strategic guidance as your business evolves.",
   },
   {
-    question: "What industries do you specialize in?",
+    question: "What makes Roar Industries different?",
     answer:
-      "I have experience across various industries including technology, retail, hospitality, and professional services, bringing fresh perspectives to each project.",
+      "Our unique combination of technical expertise, creative vision, and strategic thinking allows us to deliver comprehensive solutions. Whether you need cutting-edge technology, compelling media content, or professional film production, we bring it all under one roof.",
   },
 ];
 
 const FAQs: FC = () => {
-  return <div>FAQs</div>;
+  return <section className="py-24 md:py-32 lg:y-40">
+  <div className="container">
+    <h2 className="text-4xl md:text-7xl">FAQs</h2>
+    <div className="mt-10 md:mt-16">
+      {faqs.map(({ question, answer }) => (
+        <div
+          key={question}
+          className="border-t border-stone-400 border-dotted py-6 md:py-8 last:border-b"
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div className="text-lg md:text-2xl lg:text-3xl">{question}</div>
+            <div className="inline-flex items-center justify-center size-6 md:size-9 lg:size-11 border border-stone-400 rounded-full shrink-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+;
 };
 
 export default FAQs;

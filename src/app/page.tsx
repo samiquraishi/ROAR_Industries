@@ -3,6 +3,7 @@ import Hero from "@/sections/Hero";
 import Intro from "@/sections/Intro";
 import Steps from "@/sections/Steps";
 import Domain from "@/sections/Domain";
+import FAQs from "@/sections/FAQs";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Intro />
       <Domain />
       <Steps />
+      <FAQs/>
     </>
   );
 }
