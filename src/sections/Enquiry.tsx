@@ -63,7 +63,7 @@ const Enquiry: FC = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="email@website.com"
-                      className="w-full px-4 py-3 border border-stone-300focus:outline-none focus:ring-2 focus:ring-[#660303] focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#660303] focus:border-transparent transition-all duration-200"
                     />
                   </div>
                 </div>
@@ -121,7 +121,7 @@ const Enquiry: FC = () => {
               <div className="space-y-6 text-lg md:text-xl text-stone-600">
                 <p className="leading-loose">
                   Whether you need cutting-edge technology solutions, compelling
-                  digital marketing, or cinematic storytelling, we're here to
+                  digital marketing, or cinematic storytelling, we&apos;re here to
                   amplify your vision and accelerate your growth.
                 </p>
               </div>
