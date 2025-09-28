@@ -31,7 +31,7 @@ const Footer: FC = () => {
         <div className="py-24 md:py-32 lg:y-40 ">
           <div className="flex items-center gap-3">
             <div className="size-3 rounded-full bg-green-500"></div>
-            <span className="uppercase">Let's connect to work with us.</span>
+            <span className="uppercase">Let&apos;s connect to work with us.</span>
           </div>
           <div className="grid md:grid-cols-3 md:items-center">
             <div className="md:col-span-2">
@@ -60,7 +60,7 @@ const Footer: FC = () => {
             <div className="md:col-span-1">
               <nav className="flex flex-col md:items-end gap-8 mt-16 md:mt-0">
                 {navItems.map(({ href, label }) => (
-                  <Link href="{href}" key={label}>
+                  <Link href={href} key={label}>
                     <button className="uppercase text-md ">{label}</button>
                   </Link>
                 ))}

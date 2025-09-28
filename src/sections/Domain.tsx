@@ -4,7 +4,6 @@ import image2 from "@/assets/images/dom-mark.png";
 import image3 from "@/assets/images/dom-med.png";
 import Image from "next/image";
 
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const domains = [
   {
     name: "INFITRON",
@@ -53,7 +52,7 @@ const Domain: FC = () => {
                       src={image}
                       alt={name}
                       className="size-full object-cover"
-                      style={{ objectPosition: `50% $ {imagePositionY *100}%` }}
+                      style={{ objectPosition: `50% ${imagePositionY * 100}%` }}
                     />
                   </div>
 

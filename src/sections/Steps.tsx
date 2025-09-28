@@ -55,7 +55,7 @@ const Steps: FC = () => {
             />
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl text-white font-light">
-            Let's grow with six unique steps.
+            Let&apos;s grow with six unique steps.
           </h2>
         </div>
 
