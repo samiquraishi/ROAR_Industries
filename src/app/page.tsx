@@ -4,6 +4,7 @@ import Intro from "@/sections/Intro";
 import Steps from "@/sections/Steps";
 import Domain from "@/sections/Domain";
 import FAQs from "@/sections/FAQs";
+import Footer from "@/sections/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Domain />
       <Steps />
       <FAQs/>
+      <Footer/>
     </>
   );
 }

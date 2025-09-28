@@ -1,36 +1,38 @@
 import { FC } from "react";
+import lionicon from "@/assets/images/lion_logo.png";
+import Image from "next/image";
 
 const data = [
   {
     id: 1,
-    title: 'Set disbursement Instructions',
-    text: 'Get your blood tests delivered at home collect a sample from the your blood tests.'
+    title: "Building Business Strategy",
+    text: "Lay the foundation for growth through brand review, discovery workshops, and strategic positioning to establish market presence.",
   },
   {
     id: 2,
-    title: 'Assembly retrieves funds from your account',
-    text: 'Get your blood tests delivered at home collect a sample from the your blood tests.'
+    title: "Research & Analytics",
+    text: "Make decisions backed by real data through market research, business analytics, and customer insights to identify opportunities.",
   },
   {
     id: 3,
-    title: 'Assembly initiates disbursement',
-    text: 'Get your blood tests delivered at home collect a sample from the your blood tests.'
+    title: "Technology Design & Development",
+    text: "Build the digital engine with UX design, mobile apps, e-commerce platforms, and technical architecture for scalable systems.",
   },
   {
     id: 4,
-    title: 'Customer receives funds payment',
-    text: 'Get your blood tests delivered at home collect a sample from the your blood tests.'
+    title: "Creative Content Production & Direction",
+    text: "Bring the brand to life through creative concepts, video production, photography, and visual content that drives engagement.",
   },
   {
     id: 5,
-    title: 'Transaction confirmation',
-    text: 'Get your blood tests delivered at home collect a sample from the your blood tests.'
+    title: "Brand Management & Marketing",
+    text: "Drive consistency and performance through brand guidelines, lifecycle marketing, and multi-channel campaign management.",
   },
   {
     id: 6,
-    title: 'Process completion',
-    text: 'Get your blood tests delivered at home collect a sample from the your blood tests.'
-  }
+    title: "Reviewing Growth & Performance",
+    text: "Measure, learn and scale with performance dashboards, ROI analysis, and continuous improvement plans for sustained growth.",
+  },
 ];
 
 const Steps: FC = () => {
@@ -41,15 +43,19 @@ const Steps: FC = () => {
         <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-pink-500 to-orange-500 rounded-full blur-3xl"></div>
       </div>
-      
+
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-gray-400 text-sm uppercase tracking-wider mb-4">
-            WHATS THE FUNCTION
-          </p>
+          <div className="flex justify-center">
+            <Image
+              src={lionicon}
+              alt="Lion Logo"
+              className="mb-4 w-12 md:w-16 h-12 md:h-16 filter brightness-0 invert"
+            />
+          </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl text-white font-light">
-            Meet the feature of our product
+            Let's grow with six unique steps.
           </h2>
         </div>
 
@@ -60,18 +66,16 @@ const Steps: FC = () => {
               {/* Step Number */}
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-6">
                 <span className="text-2xl font-semibold text-gray-800">
-                  {item.id.toString().padStart(2, '0')}
+                  {item.id.toString().padStart(2, "0")}
                 </span>
               </div>
-              
+
               {/* Content */}
               <div className="space-y-4">
                 <h3 className="text-xl md:text-2xl text-white font-medium leading-tight">
                   {item.title}
                 </h3>
-                <p className="text-gray-300 leading-relaxed">
-                  {item.text}
-                </p>
+                <p className="text-gray-300 leading-relaxed">{item.text}</p>
               </div>
             </div>
           ))}
