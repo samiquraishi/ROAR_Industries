@@ -9,7 +9,6 @@ import {
   TrendingUp,
   Users,
   ArrowRight,
-  Circle,
 } from "lucide-react";
 import Image from "next/image";
 import lionicon from "@/assets/images/lion_logo.png";

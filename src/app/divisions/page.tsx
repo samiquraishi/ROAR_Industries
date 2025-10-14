@@ -242,7 +242,7 @@ const Divisions: FC = () => {
                 Proven Results
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our track record speaks for itself. Across all divisions, we've consistently delivered 
+                Our track record speaks for itself. Across all divisions, we&apos;ve consistently delivered 
                 exceptional results that drive real business growth.
               </p>
             </motion.div>
@@ -283,7 +283,7 @@ const Divisions: FC = () => {
                 Seamless Integration
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our divisions don\'t just work alongside each other—they work together. 
+                Our divisions don&apos;t just work alongside each other—they work together. 
                 This integrated approach ensures cohesive execution and maximum impact.
               </p>
             </motion.div>
@@ -345,8 +345,8 @@ const Divisions: FC = () => {
                 </h2>
               </div>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Whether you need one division or the complete ecosystem, we\'re ready to help you achieve extraordinary growth. 
-                Let\'s discuss which approach is right for your business.
+                Whether you need one division or the complete ecosystem, we&apos;re ready to help you achieve extraordinary growth. 
+                Let&apos;s discuss which approach is right for your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>

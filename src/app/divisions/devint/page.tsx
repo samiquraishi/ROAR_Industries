@@ -360,7 +360,7 @@ const Devint: FC = () => {
                     Project {project}
                   </h3>
                   <p className="text-gray-600 mb-4">
-                    A comprehensive technology solution that delivered exceptional results and transformed the client\'s business operations.
+                    A comprehensive technology solution that delivered exceptional results and transformed the client&apos;s business operations.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {['React', 'Node.js', 'AWS'].map((tech) => (
@@ -395,7 +395,7 @@ const Devint: FC = () => {
                 Ready to Transform Your Technology?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Let\'s discuss how DEVINT can help you build the technology solutions 
+                Let&apos;s discuss how DEVINT can help you build the technology solutions 
                 that will drive your business growth and competitive advantage.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

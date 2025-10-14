@@ -335,7 +335,7 @@ const Framework: FC = () => {
                 Ready to Implement the Framework?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Let\'s discuss how the Growth Partner Framework can transform your business. 
+                Let&apos;s discuss how the Growth Partner Framework can transform your business. 
                 Our team is ready to guide you through each step of the journey.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -16,14 +16,14 @@ const Contact: FC = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
 
   const contactInfo = [
     {
       icon: Mail,
       title: 'Email Us',
       details: 'hello@roarindustries.com',
-      description: 'Send us an email and we\'ll get back to you within 24 hours'
+      description: 'Send us an email and we&apos;ll get back to you within 24 hours'
     },
     {
       icon: Phone,
@@ -41,7 +41,7 @@ const Contact: FC = () => {
       icon: Clock,
       title: 'Business Hours',
       details: 'Mon - Fri: 9AM - 6PM',
-      description: 'We\'re available to discuss your project during business hours'
+      description: 'We&apos;re available to discuss your project during business hours'
     }
   ];
 
@@ -143,7 +143,7 @@ const Contact: FC = () => {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
               >
-                Let\'s discuss how ROAR INDUSTRIES can help you achieve extraordinary growth. 
+                Let&apos;s discuss how ROAR INDUSTRIES can help you achieve extraordinary growth. 
                 Our team is ready to transform your vision into reality.
               </motion.p>
             </motion.div>
@@ -165,7 +165,7 @@ const Contact: FC = () => {
                   Start Your Growth Journey
                 </h2>
                 <p className="text-gray-600">
-                  Ready to transform your business? Let\'s discuss how ROAR INDUSTRIES can help you achieve extraordinary growth.
+                  Ready to transform your business? Let&apos;s discuss how ROAR INDUSTRIES can help you achieve extraordinary growth.
                 </p>
               </div>
 
@@ -339,7 +339,7 @@ const Contact: FC = () => {
                 Other Ways to Reach Us
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Prefer to connect in a different way? We're available through multiple channels 
+                Prefer to connect in a different way? We&apos;re available through multiple channels 
                 and always happy to discuss your project.
               </p>
             </motion.div>
@@ -426,7 +426,7 @@ const Contact: FC = () => {
                 Still Have Questions?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Our team is here to help. Reach out to us and let\'s discuss how we can 
+                Our team is here to help. Reach out to us and let&apos;s discuss how we can 
                 help you achieve extraordinary growth for your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

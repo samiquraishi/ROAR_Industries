@@ -130,7 +130,7 @@ const About: FC = () => {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
               >
-                We're not just another agency. We're your complete business growth partner, 
+                We&apos;re not just another agency. We&apos;re your complete business growth partner, 
                 providing an integrated ecosystem of expertise that transforms visions into victories.
               </motion.p>
             </motion.div>
@@ -236,7 +236,7 @@ const About: FC = () => {
                 Our Journey
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                From a bold vision to a comprehensive ecosystem, here\'s how ROAR INDUSTRIES 
+                From a bold vision to a comprehensive ecosystem, here&apos;s how ROAR INDUSTRIES 
                 has evolved to become the complete business growth partner we are today.
               </p>
             </motion.div>
@@ -337,7 +337,7 @@ const About: FC = () => {
                 Our Achievements
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                The numbers speak for themselves. Here's what we've accomplished 
+                The numbers speak for themselves. Here&apos;s what we&apos;ve accomplished 
                 together with our clients.
               </p>
             </motion.div>
@@ -378,7 +378,7 @@ const About: FC = () => {
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                 Become part of our growing family of successful businesses. 
-                Let\'s write the next chapter of your growth story together.
+                Let&apos;s write the next chapter of your growth story together.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>

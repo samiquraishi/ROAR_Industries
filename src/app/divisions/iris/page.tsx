@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { motion } from "framer-motion";
-import { Camera, Video, Edit3, Palette, Zap, ArrowRight, CheckCircle } from "lucide-react";
+import { Camera, Video, Edit3, Zap, ArrowRight, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import Header from "@/sections/Header";
 import Footer from "@/sections/Footer";
@@ -391,7 +391,7 @@ const Iris: FC = () => {
                 Ready to Create Something Extraordinary?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Let\'s discuss how IRIS STUDIO can help you create visual content 
+                Let&apos;s discuss how IRIS STUDIO can help you create visual content 
                 that captivates your audience and drives real business results.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

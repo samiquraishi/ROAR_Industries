@@ -256,7 +256,7 @@ const Bionic: FC = () => {
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 We employ proven marketing strategies and innovative approaches to ensure 
-                your brand stands out in today's competitive marketplace.
+                your brand stands out in today&apos;s competitive marketplace.
               </p>
             </motion.div>
 
@@ -339,7 +339,7 @@ const Bionic: FC = () => {
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Explore some of our recent marketing campaigns that have delivered exceptional results 
-                and transformed our clients' businesses.
+                and transformed our clients&apos; businesses.
               </p>
             </motion.div>
 
@@ -395,7 +395,7 @@ const Bionic: FC = () => {
                 Ready to Amplify Your Brand?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Let\'s discuss how BIONIC MEDIA can help you build a powerful brand presence 
+                Let&apos;s discuss how BIONIC MEDIA can help you build a powerful brand presence 
                 and connect with your ideal customers through strategic marketing.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
