@@ -138,14 +138,14 @@ const Domain: FC = () => {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={prevDomain}
-            className="border-2 border-[#540000] bg-[#540000] hover:bg-stone-300 inline-flex items-center justify-center size-11 rounded-full text-stone-300 hover:text-[#540000] transition-colors"
+            className="border-2 border-[#540000] bg-[#540000] hover:bg-stone-200 inline-flex items-center justify-center size-11 rounded-full text-stone-200 hover:text-[#540000] transition-colors"
           >
             <ArrowLeft className="size-6" />
           </motion.button>
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={nextDomain}
-            className="border-2 border-[#540000] bg-[#540000] hover:bg-stone-300 inline-flex items-center justify-center size-11 rounded-full text-stone-300 hover:text-[#540000] transition-colors"
+            className="border-2 border-[#540000] bg-[#540000] hover:bg-stone-200 inline-flex items-center justify-center size-11 rounded-full text-stone-200 hover:text-[#540000] transition-colors"
           >
             <ArrowRight className="size-6" />
           </motion.button>
