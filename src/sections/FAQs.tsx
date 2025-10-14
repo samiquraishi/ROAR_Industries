@@ -12,9 +12,9 @@ const faqs = [
       "We follow a collaborative approach starting with discovery and strategy, followed by design and development phases, with regular client check-ins and feedback loops to ensure the final product exceeds your expectations.",
   },
   {
-    question: "What does it mean by 'Let's grow together'?",
+    question: "What does it mean by 'Let\'s grow together'?",
     answer:
-      "This reflects our philosophy of building long-term partnerships with our clients. We don't just deliver a project and walk away, we're invested in your ongoing success, offering continued support, optimization, and strategic guidance as your business evolves.",
+      "This reflects our philosophy of building long-term partnerships with our clients. We don\'t just deliver a project and walk away, we\'re invested in your ongoing success, offering continued support, optimization, and strategic guidance as your business evolves.",
   },
   {
     question: "What makes Roar Industries different?",

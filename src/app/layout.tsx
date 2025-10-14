@@ -10,8 +10,8 @@ const raleway = Raleway({
 })
 
 export const metadata: Metadata = {
-  title: "Roar Industries",
-  description: "Created by Sami",
+  title: "ROAR Industries - Your Complete Business Growth Partner",
+  description: "Every great brand starts with a ROAR. We're your complete business growth partner, providing an integrated ecosystem of expertise that transforms visions into victories.",
 };
 
 export default function RootLayout({

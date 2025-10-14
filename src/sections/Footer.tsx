@@ -1,26 +1,27 @@
 import Link from "next/link";
 import { FC } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 const navItems = [
   {
-    href: "#",
+    href: "/",
     label: "Home",
   },
   {
-    href: "#",
-    label: "Services",
+    href: "/framework",
+    label: "Framework",
   },
   {
-    href: "#",
-    label: "About",
+    href: "/divisions",
+    label: "Divisions",
   },
   {
-    href: "#",
+    href: "/about",
+    label: "About us",
+  },
+  {
+    href: "/contact",
     label: "Contact us",
-  },
-  {
-    href: "#",
-    label: "Social Media links",
   },
 ];
 
@@ -39,22 +40,10 @@ const Footer: FC = () => {
                 Take this <span className="  bg-gradient-to-r from-[#ffc400] via-[#ffb300] to-[#ff7700] bg-clip-text text-transparent">opportunity</span> and grow your business.
               </h2>
 
-              <button className=" mt-8 items-center gap-2 bg-transparent border-[#660303] border-2 hover:border-0 h-11 px-7 inline-flex transition-all duration-200 active:scale-95">
-                roarindustries.com
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                  />
-                </svg>
+              <button className=" mt-8 items-center gap-2 bg-transparent border-[#540000] border-2 hover:border-0 h-11 px-7 inline-flex transition-all duration-200 active:scale-95">
+                info@roarindustries.in
+                
+                <ArrowUpRight className="size-6" />
               </button>
             </div>
             <div className="md:col-span-1">

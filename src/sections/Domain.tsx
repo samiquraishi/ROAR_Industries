@@ -1,52 +1,94 @@
-import { FC } from "react";
-import image1 from "@/assets/images/dom-tech.png";
-import image2 from "@/assets/images/dom-mark.png";
-import image3 from "@/assets/images/dom-med.png";
+"use client";
+
+import { FC, useState } from "react";
+import { motion } from "framer-motion";
+import { Code, Camera, TrendingUp, ArrowLeft, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import image1 from "@/assets/images/devint.jpg";
+import image2 from "@/assets/images/iris.jpg";
+import image3 from "@/assets/images/bionic.jpg";
 import Image from "next/image";
 
 const domains = [
   {
-    name: "INFITRON",
+    name: "DEVINT",
+    tagline: "Engineering the Future of Growth",
     quote:
-      "We build scalable web applications, mobile solutions, and custom software that drive innovation and streamline your business operations.",
+      "Technology solutions that power business transformation. From web development to AI integration, we build the digital infrastructure your business needs to scale efficiently and stay competitive.",
     image: image1,
     imagePositionY: 0.2,
-  },
-  {
-    name: "DEVINT",
-    quote:
-      "We create compelling digital experiences, brand strategies, and content solutions that captivate audiences and amplify your message.",
-    image: image2,
-    imagePositionY: 0.1,
+    icon: Code,
+    gradient: "bg-gradient-to-br from-orange-500 to-red-900",
+    ctaText: "Get Tech Consultation",
+    ctaPath: "/divisions/devint",
   },
   {
     name: "IRIS STUDIO",
+    tagline: "We Turn Stories Into Motion",
     quote:
-      "We produce cinematic content, documentaries, and branded videos that tell powerful stories and bring your vision to life.",
+      "Cinematic storytelling and visual content that captivates audiences. From concept to final cut, we bring your brand narrative to life through compelling visuals that resonate and inspire action.",
+    image: image2,
+    imagePositionY: 0.1,
+    icon: Camera,
+    gradient: "bg-gradient-to-br from-purple-800 to-pink-700",
+    ctaText: "Create With IRIS",
+    ctaPath: "/divisions/iris",
+  },
+  {
+    name: "BIONIC MEDIA",
+    tagline: "Where Brands Come Alive",
+    quote:
+      "Strategic brand management and marketing that drives growth. We amplify your brand presence and connect you with your ideal customers through data-driven strategies and creative campaigns.",
     image: image3,
     imagePositionY: 0.55,
+    icon: TrendingUp,
+    gradient: "bg-gradient-to-br from-blue-800 to-cyan-400",
+    ctaText: "Amplify With BIONIC",
+    ctaPath: "/divisions/bionic",
   },
 ];
 
 const Domain: FC = () => {
-  const domainIndex = 0;
+  const [currentDomain, setCurrentDomain] = useState(0);
+
+  const nextDomain = () => {
+    setCurrentDomain((prev) => (prev + 1) % domains.length);
+  };
+
+  const prevDomain = () => {
+    setCurrentDomain((prev) => (prev - 1 + domains.length) % domains.length);
+  };
+
   return (
-    <section className="py-24 md:py-32 lg:y-40">
-      <h2 className="text-4xl md-text-7xl flex flex-col overflow-hidden">
-        <span className="whitespace-nowrap">We work on everything.</span>
-        <span className="whitespace-nowrap self-end text-[#660303]">
-          We work on everything.
-        </span>
-      </h2>
+    <section className="py-24 md:py-32 lg:py-40">
       <div className="container">
+        <div>
+          <h2 className="text-4xl md:text-7xl flex flex-col overflow-hidden mb-20">
+            <span className="whitespace-nowrap">Explore Our Divisions</span>
+            <span className="whitespace-nowrap self-end bg-gradient-to-r from-roar-gold via-roar-orange to-[#ffc800] bg-clip-text text-transparent">
+              Three Divisions, One Mission
+            </span>
+          </h2>
+        </div>
+
         <div className="mt-20">
           {domains.map(
-            ({ name, quote, image, imagePositionY }, index) =>
-              index === domainIndex && (
-                <div
-                  key={name}
-                  className="grid md:grid-cols-5 gap-8 lg:gap-16 md:items-end "
-                >
+            (
+              {
+                name,
+                tagline,
+                quote,
+                image,
+                imagePositionY,
+                icon: Icon,
+                gradient,
+                ctaText,
+                ctaPath,
+              },
+              index
+            ) =>
+             index === currentDomain && (
+                <div key={index} className="grid md:grid-cols-5 gap-8 lg:gap-16 md:items-end">
                   <div className="aspect-square md:aspect-[3/4] md:col-span-2">
                     <Image
                       src={image}
@@ -56,44 +98,70 @@ const Domain: FC = () => {
                     />
                   </div>
 
-                  <div className="text-3xl mt-8 md:col-span-3">{quote}</div>
+                  <div className="md:col-span-3 space-y-6 ">
+                    <div className="flex items-center space-x-4 mb-4">
+                      <div
+                        className={`w-16 h-16 ${gradient}  flex items-center justify-center`}
+                      >
+                        <Icon className="h-8 w-8 text-stone-300" />
+                      </div>
+                      <div>
+                        <h3 className="text-3xl font-bold text-stone-900">
+                          {name}
+                        </h3>
+                        <p className="text-[#ffd000] font-semibold">
+                          {tagline}
+                        </p>
+                      </div>
+                    </div>
+
+                    <p className="text-xl text-gray-700 leading-relaxed">
+                      {quote}
+                    </p>
+
+                    <motion.div whileHover={{ x: 5 }}>
+                      <Link
+                        href={ctaPath}
+                        className="inline-flex items-center space-x-2 text-[#ffd000] hover:text-[#ff9900] transition-colors font-semibold"
+                      >
+                        <span>{ctaText}</span>
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </motion.div>
+                  </div>
                 </div>
               )
           )}
         </div>
-        <div className="flex gap-4 mt-6">
-          <button className="border border-stone-400 inline-flex items-center justify-center size-11 rounded-full">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
-              />
-            </svg>
-          </button>
-          <button className="border border-stone-400 inline-flex items-center justify-center size-11 rounded-full">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-              />
-            </svg>
-          </button>
+
+        <div className="flex gap-4 mt-12">
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={prevDomain}
+            className="border-2 border-[#540000] bg-[#540000] hover:bg-stone-300 inline-flex items-center justify-center size-11 rounded-full text-stone-300 hover:text-[#540000] transition-colors"
+          >
+            <ArrowLeft className="size-6" />
+          </motion.button>
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={nextDomain}
+            className="border-2 border-[#540000] bg-[#540000] hover:bg-stone-300 inline-flex items-center justify-center size-11 rounded-full text-stone-300 hover:text-[#540000] transition-colors"
+          >
+            <ArrowRight className="size-6" />
+          </motion.button>
+        </div>
+
+        {/* Division Indicators */}
+        <div className="flex justify-center space-x-2 mt-8">
+          {domains.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentDomain(index)}
+              className={`w-3 h-3 rounded-full transition-colors ${
+                index === currentDomain ? "bg-[#540000]" : "bg-gray-400"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>

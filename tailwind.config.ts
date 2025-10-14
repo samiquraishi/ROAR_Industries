@@ -15,7 +15,13 @@ const config: Config = {
             },
             fontFamily: {
                 sans: "var(--font-raleway)",
-            },    
+            },
+            colors: {
+                'roar-gold': '#ffd000',
+                'roar-orange': '#ff9900',
+                'roar-black': '#000000',
+                'roar-gray': '#1a1a1a',
+            },
             container: {
                 center: true,
                 padding: {
