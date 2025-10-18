@@ -1,7 +1,6 @@
 "use client";
 
 import { FC } from "react";
-import { motion } from "framer-motion";
 
 const Hero: FC = () => {
   return (
@@ -27,16 +26,16 @@ const Hero: FC = () => {
         >
           <span
             className="block text-center" 
-            style={{ fontSize: "clamp(3.5rem, 29vw, 30rem)",
-              letterSpacing: "2.6rem"
+            style={{ fontSize: "clamp(5rem, 35.5vw, 40rem)",
+              letterSpacing: ""
              }}
           >
             ROAR
           </span>
           <span
             className="block text-center" 
-            style={{ fontSize: "clamp(2.5rem, 15vw, 20rem)",
-              letterSpacing: "-0.3rem"
+            style={{ fontSize: "clamp(2.2rem, 15.9vw, 20rem)",
+              letterSpacing: ""
              }}
           >
             INDUSTRIES
