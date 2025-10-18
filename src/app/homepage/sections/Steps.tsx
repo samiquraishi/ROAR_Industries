@@ -129,7 +129,7 @@ const StepCard: FC<{ item: FrameworkStep; index: number }> = ({
 
 const Steps: FC = () => {
   return (
-    <section className="bg-[#0a0a0a] py-24  relative overflow-hidden -mt-20">
+    <section className="bg-[#0a0a0a] py-24  relative overflow-hidden ">
       {/* Subtle grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:78px_78px] "></div>
 

@@ -1,14 +1,14 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Equal, ArrowUpRight } from "lucide-react";
 
 const navItems = [
   {
-    label: "About",
-    href: "/about",
+    label: "Home",
+    href: "/",
   },
   {
     label: "Framework",
@@ -19,68 +19,82 @@ const navItems = [
     href: "/divisions",
   },
   {
-    label: "Contact",
-    href: "/contact",
-  },
+    label: "About",
+    href: "/about",
+  }
 ];
 
 const Header: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Auto-hide menu when switching to large screens
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        // lg breakpoint
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{
-        duration: 0.8,
-        ease: "easeInOut",
-        delay: 0.2,
-      }}
+    <header
+     
     >
-      {/* Background header with logo */}
+      {/* Header with backdrop blur and mix-blend-difference */}
       <div className="fixed top-0 left-0 w-full z-40 mix-blend-difference backdrop-blur-md pointer-events-none">
         <div className="container !max-w-full">
-          <div className="flex justify-between h-20 items-center">
+          <div className="flex justify-between h-20 items-center px-6">
+            {/* Left side - Logo */}
             <div className="pointer-events-auto">
               <Link href="/">
-                <span className="text-3xl font-medium uppercase text-white">
-                  Roar&nbsp; Industries
+                <span className="text-sm font-medium text-white">
+                  ROAR INDUSTRIES
                 </span>
               </Link>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Menu button and CTA */}
-      <div className="fixed top-0 left-0 z-50 w-full pointer-events-none">
-        <div className="container !max-w-full">
-          <div className="flex justify-end h-20 items-center">
+            {/* Center - Navigation (hidden on small screens) */}
+            <nav className="hidden md:flex items-center gap-8 pointer-events-auto">
+              {navItems.map(({ label, href }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  className="text-sm text-white hover:text-gray-300 transition-colors"
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Right side - Contact and Menu */}
             <div className="flex gap-4 items-center pointer-events-auto">
-              {/* Menu Button */}
+              {/* Contact Button */}
+              <Link
+                href="/contact"
+                className="text-sm text-white hover:text-gray-300 transition-colors hidden md:inline-flex items-center gap-1"
+              >
+                Contact
+                <ArrowUpRight className="w-3 h-3" />
+              </Link>
+
+              {/* Mobile Menu Button */}
               <motion.div
                 whileHover={{ rotate: 270 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.3 }}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="size-8 border rounded-full inline-flex items-center justify-center bg-stone-300 cursor-pointer"
+                className="md:hidden size-8 inline-flex items-center justify-center cursor-pointer mix-blend-difference"
               >
                 {isMenuOpen ? (
-                  <X size={26} className="text-stone-800" />
+                  <X size={26} className="text-white" />
                 ) : (
-                  <Equal size={26} className="text-stone-800" />
+                  <Equal size={26} className="text-white" />
                 )}
               </motion.div>
-
-              {/* Get Started Button */}
-              <div>
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-[#540000] hover:bg-transparent border-[#540000] border-2 h-9 py-3 px-5 text-sm text-white hover:text-[#540000] font-medium hidden md:inline-flex items-center transition-all duration-200"
-                >
-                  <Link href="/contact">Contact Us</Link>
-                </motion.button>
-              </div>
             </div>
           </div>
         </div>
@@ -94,30 +108,30 @@ const Header: FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed top-0 left-0 w-full h-screen bg-stone-300  z-30 pt-8 overflow-y-auto"
+            className="fixed top-0 left-0 w-full h-screen bg-black  z-30 pt-8 overflow-y-auto"
           >
             <nav className="mt-20 flex flex-col">
               {navItems.map(({ label, href }) => (
                 <Link
                   href={href}
                   key={label}
-                  className="text-stone-800 group/nav-item relative isolate"
+                  className="text-stone-300 group/nav-item relative isolate"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div className="container flex items-center justify-between !max-w-full border-b  border-stone-400 py-4 md:py-6 px-6 transition-colors">
-                    <span className="text-lg md:text-2xl group-hover/nav-item:pl-4 transition-all duration-300 ">
+                  <div className="container flex items-center justify-between !max-w-full border-b  border-stone-900 py-4 px-6 transition-colors">
+                    <span className="text-lg group-hover/nav-item:pl-4 transition-all duration-300 ">
                       {label}
                     </span>
                     <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8" />
                   </div>
-                  <div className="absolute left-0 w-full h-0 -z-10  bg-stone-400 group-hover/nav-item:h-full transition-all duration-300 bottom-0"></div>
+                  <div className="absolute left-0 w-full h-0 -z-10  bg-[#1a1a1a] group-hover/nav-item:h-full transition-all duration-300 bottom-0"></div>
                 </Link>
               ))}
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 };
 

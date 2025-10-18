@@ -8,22 +8,12 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user has already seen the loading screen in this session
-    const loadingSeen = sessionStorage.getItem('loadingSeen');
-    
-    if (loadingSeen) {
-      // User has already seen loading screen, skip it
+    // Show loading screen for exactly 3 seconds
+    const timer = setTimeout(() => {
       setIsLoading(false);
-    } else {
-      // Show loading screen for 3 seconds
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-        // Mark that user has seen the loading screen
-        sessionStorage.setItem('loadingSeen', 'true');
-      }, 3000);
+    }, 1200);
 
-      return () => clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -33,35 +23,87 @@ export default function Home() {
         {isLoading && (
           <motion.div
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="fixed inset-0 z-50 bg-black flex items-center justify-center"
+            exit={{ y: "100vh", opacity: 0 }}
+            transition={{
+              y: { duration: 1, delay: 1.2, ease: "easeInOut" },
+              opacity: { duration: 0.1, delay: 2.5 },
+            }}
+            className="fixed inset-0 z-50 bg-black text-white flex items-center justify-center"
           >
-            <div className="text-center">
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="text-4xl md:text-6xl lg:text-7xl font-light text-white leading-tight"
+            <motion.h3
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                opacity: { duration: 0.2, delay: 0.1 },
+              }}
+              className="text-lg  font-semibold flex items-center justify-center gap-2"
+            >
+              <motion.span
+                initial={{ x: 40, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ y: -40, opacity: 0 }}
+                transition={{
+                  duration: 0.2,
+                  delay: 0.1,
+                  ease: "easeOut",
+                }}
+                className="inline-block"
               >
-                <span className="block">Want to grow</span>
-                <span className="block">your business?</span>
-              </motion.h1>
-
-              {/* Subtle loading indicator */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.5 }}
-                className="mt-8 flex justify-center"
+                Want
+              </motion.span>
+              <motion.span
+                initial={{ x: 40, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ y: -40, opacity: 0 }}
+                transition={{
+                  duration: 0.2,
+                  delay: 0.3,
+                  ease: "easeOut",
+                }}
+                className="inline-block"
               >
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  className="w-2 h-2 bg-white rounded-full"
-                />
-              </motion.div>
-            </div>
+                to
+              </motion.span>
+              <motion.span
+                initial={{ x: 40, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ y: -40, opacity: 0 }}
+                transition={{
+                  duration: 0.2,
+                  delay: 0.5,
+                  ease: "easeOut",
+                }}
+                className="inline-block"
+              >
+                grow
+              </motion.span>
+              <motion.span
+                initial={{ x: 40, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ y: -40, opacity: 0 }}
+                transition={{
+                  duration: 0.2,
+                  delay: 0.7,
+                  ease: "easeOut",
+                }}
+                className="inline-block"
+              >
+                your
+              </motion.span>
+              <motion.span
+                initial={{ x: 40, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ y: -50, opacity: 0 }}
+                transition={{
+                  duration: 0.3,
+                  delay: 0.9,
+                  ease: "easeOut",
+                }}
+                className="inline-block"
+              >
+                business?
+              </motion.span>
+            </motion.h3>
           </motion.div>
         )}
       </AnimatePresence>
