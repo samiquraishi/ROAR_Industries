@@ -31,7 +31,9 @@ const InteractiveSection: FC = () => {
 
   const handleClick = () => {
     console.log("Interactive section clicked!");
-    setIsVideoOpen(true);
+    if (isHovering) {
+      setIsVideoOpen(true);
+    }
   };
 
   const handleMouseEnter = () => {
@@ -89,18 +91,26 @@ const InteractiveSection: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
             className="fixed inset-0 z-50 flex items-center justify-center"
           >
             {/* Blurred background */}
-            <div
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
               className="absolute inset-0 bg-black/80 backdrop-blur-md"
               onClick={closeVideo}
-            ></div>
+            ></motion.div>
 
             {/* Video container */}
             <motion.div
-              layoutId="video-player"
-              className="relative w-[90vw] h-[50.625vw] max-w-[1600px] max-h-[90vh] z-10 rounded-lg overflow-hidden"
+              initial={{ opacity: 1, scale: 0, y: 0, rotate: 0 }}
+              animate={{ opacity: 1, scale: 1, y: 0, rotate: 360 }}
+              exit={{ opacity: 1, scale: 0, y: 0, rotate: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="relative w-[95vw] h-[70vh] sm:w-[90vw] sm:h-[60vh] md:w-[80vw] lg:w-[70vw] lg:h-[65vh] xl:w-[60vw] xl:h-[70vh] max-w-[1600px] max-h-[90vh] z-10 rounded-lg overflow-hidden p-4 sm:p-6 md:p-8"
             >
               <video
                 src="/videos/ROAR-exp.mp4"
@@ -108,6 +118,8 @@ const InteractiveSection: FC = () => {
                 loop
                 autoPlay
                 controls
+                playsInline
+                muted
                 onError={(e) => {
                   console.log("Video loading error:", e);
                 }}
@@ -116,13 +128,17 @@ const InteractiveSection: FC = () => {
                 }}
               />
               {/* Close Button */}
-              <button
+              <motion.button
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ delay: 0.2, duration: 0.2 }}
                 onClick={closeVideo}
                 className="absolute top-4 right-4 text-white p-2 bg-white/20 rounded-full transition-colors hover:bg-white/30"
                 aria-label="Close"
               >
                 <Minimize className="h-6 w-6" />
-              </button>
+              </motion.button>
             </motion.div>
           </motion.div>
         )}

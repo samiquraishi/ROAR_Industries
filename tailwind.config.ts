@@ -14,6 +14,9 @@ const config: Config = {
             },
             fontFamily: {
                 sans: "var(--font-raleway)",
+                'raleway': "var(--font-raleway)",
+                'cinematic': ['var(--font-orbitron)', 'monospace'],
+                'modern': ['var(--font-inter)', 'sans-serif'],
             },
             colors: {
                 'roar-gold': '#ffd000',

@@ -1,14 +1,15 @@
 "use client";
 
-import { FC, useState } from "react";
-import { motion } from "framer-motion";
-import { Code, Camera, TrendingUp, ArrowLeft, ArrowRight } from "lucide-react";
+import { FC, useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import image1 from "@/assets/images/devint.jpg";
 import image2 from "@/assets/images/iris.jpg";
 import image3 from "@/assets/images/bionic.jpg";
 import Image from "next/image";
 
+// --- Domain Data ---
 const domains = [
   {
     name: "DEVINT",
@@ -16,9 +17,8 @@ const domains = [
     quote:
       "Technology solutions that power business transformation. From web development to AI integration, we build the digital infrastructure your business needs to scale efficiently and stay competitive.",
     image: image1,
+    video: "/videos/DEVINT_homepage.mp4",
     imagePositionY: 0.2,
-    icon: Code,
-    gradient: "bg-gradient-to-br from-orange-500 to-red-900",
     ctaText: "Get Tech Consultation",
     ctaPath: "/divisions/devint",
   },
@@ -28,9 +28,8 @@ const domains = [
     quote:
       "Cinematic storytelling and visual content that captivates audiences. From concept to final cut, we bring your brand narrative to life through compelling visuals that resonate and inspire action.",
     image: image2,
+    video: "/videos/IRIS_homepage.mp4",
     imagePositionY: 0.1,
-    icon: Camera,
-    gradient: "bg-gradient-to-br from-purple-800 to-pink-700",
     ctaText: "Create With IRIS",
     ctaPath: "/divisions/iris",
   },
@@ -40,128 +39,354 @@ const domains = [
     quote:
       "Strategic brand management and marketing that drives growth. We amplify your brand presence and connect you with your ideal customers through data-driven strategies and creative campaigns.",
     image: image3,
+    video: "/videos/BIONIC_homepage.mp4",
     imagePositionY: 0.55,
-    icon: TrendingUp,
-    gradient: "bg-gradient-to-br from-blue-800 to-cyan-400",
     ctaText: "Amplify With BIONIC",
     ctaPath: "/divisions/bionic",
   },
 ];
 
+// --- Animation Variants ---
+const transition = { duration: 0.5, ease: [0.4, 0, 0.2, 1] as const };
+const exitTransition = { duration: 0.3, ease: "easeOut" as const };
+
+// For Column 0 (DEVINT)
+const sidePanelFromLeft = {
+  initial: { clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)" },
+  animate: {
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    transition,
+  },
+  exit: {
+    clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+    transition: exitTransition,
+  },
+};
+
+// For Column 2 (BIONIC)
+const sidePanelFromRight = {
+  initial: { clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)" },
+  animate: {
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    transition,
+  },
+  exit: {
+    clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
+    transition: exitTransition,
+  },
+};
+
+// For Column 1 (IRIS) - Left Panel
+const centerPanelLeft = {
+  initial: { clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)" },
+  animate: {
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    transition,
+  },
+  exit: {
+    clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
+    transition: exitTransition,
+  },
+};
+
+// For Column 1 (IRIS) - Right Panel
+const centerPanelRight = {
+  initial: { clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)" },
+  animate: {
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    transition,
+  },
+  exit: {
+    clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+    transition: exitTransition,
+  },
+};
+
+// --- Reusable Content Component ---
+interface DomainContentProps {
+  name: string;
+  tagline: string;
+  quote: string;
+  ctaText: string;
+  ctaPath: string;
+}
+
+// 2-Column layout for side panels (DEVINT, BIONIC)
+const DomainContent: FC<DomainContentProps> = ({
+  name,
+  tagline,
+  quote,
+  ctaText,
+  ctaPath,
+}) => (
+  <div className="grid md:grid-cols-2 gap-8 lg:gap-16 max-w-4xl mx-auto">
+    {/* Col 1: Title, Tag, CTA */}
+    <div className="flex flex-col justify-center">
+      <h3
+        className="font-bold text-white mb-2"
+        style={{ fontSize: "clamp(1.5rem, 4vw, 3rem)" }}
+      >
+        {name}
+      </h3>
+      <p
+        className="text-stone-300 font-semibold mb-8"
+        style={{ fontSize: "clamp(0.875rem, 2vw, 1.25rem)" }}
+      >
+        {tagline}
+      </p>
+      <motion.div whileHover={{ x: 5 }}>
+        <Link
+          href={ctaPath}
+          className="inline-flex items-center space-x-2 text-stone-300 hover:text-stone-100 transition-colors font-semibold"
+          style={{ fontSize: "clamp(0.75rem, 1.5vw, 1.125rem)" }}
+        >
+          <span>{ctaText}</span>
+          <ArrowRight className="h-5 w-5" />
+        </Link>
+      </motion.div>
+    </div>
+    {/* Col 2: Quote */}
+    <div className="flex items-center">
+      <p
+        className="text-stone-300 leading-relaxed"
+        style={{ fontSize: "clamp(0.875rem, 2.5vw, 1.5rem)" }}
+      >
+        {quote}
+      </p>
+    </div>
+  </div>
+);
+
+// --- Main Component ---
 const Domain: FC = () => {
-  const [currentDomain, setCurrentDomain] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  const nextDomain = () => {
-    setCurrentDomain((prev) => (prev + 1) % domains.length);
-  };
-
-  const prevDomain = () => {
-    setCurrentDomain((prev) => (prev - 1 + domains.length) % domains.length);
-  };
+  // Handle video play/pause on hover
+  useEffect(() => {
+    videoRefs.current.forEach((video, index) => {
+      if (video) {
+        if (hoveredIndex === index) {
+          video.currentTime = 0;
+          video.play().catch((error) => {
+            // Ignore play() interrupted errors
+            if (error.name !== "AbortError") {
+              console.warn("Video play error:", error);
+            }
+          });
+        } else {
+          video.pause();
+        }
+      }
+    });
+  }, [hoveredIndex]);
 
   return (
-    <section className="py-24 md:py-32 lg:py-40">
-      <div className="container">
-        <div>
-          <h2 className="text-4xl md:text-7xl flex flex-col overflow-hidden mb-20">
-            <span className="whitespace-nowrap">Explore Our Divisions</span>
-            <span className="whitespace-nowrap self-end bg-gradient-to-r from-roar-gold via-roar-orange to-[#ffc800] bg-clip-text text-transparent">
-              Three Divisions, One Mission
-            </span>
-          </h2>
+    <section className="bg-stone-200 py-24 md:py-32 ">
+      <div className="max-w-full px-4 md:px-8">
+        {/* Heading */}
+        <div className="mb-8 md:mb-16">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-stone-800 mb-8">
+            Looking for individual services?
+          </h1>
+          <Link
+            href="/divisions"
+            className="inline-flex items-center space-x-2 text-stone-600 hover:text-stone-800 transition-colors text-base md:text-xl lg:text-2xl mb-8 leading-relaxed"
+          >
+            <span>Explore our divisions</span>
+            <ArrowUpRight className="h-5 w-5" />
+          </Link>
         </div>
 
-        <div className="mt-20">
-          {domains.map(
-            (
-              {
-                name,
-                tagline,
-                quote,
-                image,
-                imagePositionY,
-                icon: Icon,
-                gradient,
-                ctaText,
-                ctaPath,
-              },
-              index
-            ) =>
-             index === currentDomain && (
-                <div key={index} className="grid md:grid-cols-5 gap-8 lg:gap-16 md:items-end">
-                  <div className="aspect-square md:aspect-[3/4] md:col-span-2">
-                    <Image
-                      src={image}
-                      alt={name}
-                      className="size-full object-cover"
-                      style={{ objectPosition: `50% ${imagePositionY * 100}%` }}
-                    />
-                  </div>
+        <div className="block md:hidden space-y-6 mx-[-1rem] px-4">
+          {domains.map((domain) => (
+            <div
+              key={domain.name}
+              className="grid grid-cols-2 overflow-hidden" // No gap here
+            >
+              {/* Left Column - Image */}
+              <div className="relative aspect-[1080/1444]">
+                <Image
+                  src={domain.image}
+                  alt={domain.name}
+                  fill
+                  className="object-cover"
+                  style={{
+                    objectPosition: `50% ${domain.imagePositionY * 100}%`,
+                  }}
+                />
+              </div>
 
-                  <div className="md:col-span-3 space-y-6 ">
-                    <div className="flex items-center space-x-4 mb-4">
-                      <div
-                        className={`w-16 h-16 ${gradient}  flex items-center justify-center`}
-                      >
-                        <Icon className="h-8 w-8 text-stone-300" />
-                      </div>
-                      <div>
-                        <h3 className="text-3xl font-bold text-stone-900">
-                          {name}
-                        </h3>
-                        <p className="text-[#ffd000] font-semibold">
-                          {tagline}
-                        </p>
-                      </div>
-                    </div>
+              {/* Right Column - Content */}
+              <div className="bg-black text-white p-4 flex flex-col justify-center space-y-3 h-full">
+                <h3
+                  className="font-bold text-white"
+                  style={{ fontSize: "clamp(1.25rem, 3vw, 2rem)" }}
+                >
+                  {domain.name}
+                </h3>
+                <p
+                  className="text-stone-300 font-semibold"
+                  style={{ fontSize: "clamp(0.75rem, 1.5vw, 1rem)" }}
+                >
+                  {domain.tagline}
+                </p>
+                <Link
+                  href={domain.ctaPath}
+                  className="inline-flex items-center space-x-2 text-stone-300 hover:text-stone-100 transition-colors font-semibold"
+                  style={{ fontSize: "clamp(0.625rem, 1.2vw, 0.875rem)" }}
+                >
+                  <span>{domain.ctaText}</span>
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
 
-                    <p className="text-xl text-gray-700 leading-relaxed">
-                      {quote}
+        {/* Desktop Layout - Three Column with Hover */}
+        <div
+          className="hidden md:block relative w-full"
+          style={{ height: "calc(100vw * 1444 / 1080 / 3)" }}
+          onMouseLeave={() => setHoveredIndex(null)}
+        >
+          {/* Layer 1: The three-column image grid */}
+          <div className="grid grid-cols-3 h-full gap-2 md:gap-3 lg:gap-4">
+            {domains.map((domain, index) => (
+              <div
+                key={domain.name}
+                className="relative size-full cursor-pointer overflow-hidden"
+                onMouseEnter={() => setHoveredIndex(index)}
+              >
+                {/* Video Element */}
+                <video
+                  ref={(el) => {
+                    videoRefs.current[index] = el;
+                  }}
+                  src={domain.video}
+                  muted
+                  loop
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
+                  style={{
+                    opacity: hoveredIndex === index ? 1 : 0,
+                    transform:
+                      hoveredIndex === index ? "scale(1.05)" : "scale(1)",
+                  }}
+                />
+
+                {/* Image Element */}
+                <Image
+                  src={domain.image}
+                  alt={domain.name}
+                  fill
+                  className="object-cover size-full transition-all duration-700 ease-in-out"
+                  style={{
+                    objectPosition: `50% ${domain.imagePositionY * 100}%`,
+                    opacity: hoveredIndex === index ? 0 : 1,
+                    transform:
+                      hoveredIndex === index ? "scale(1.05)" : "scale(1)",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Layer 2: The Animated Panels */}
+          <AnimatePresence>
+            {/* Case 1: Hovering Column 0 (DEVINT) */}
+            {hoveredIndex === 0 && (
+              <motion.div
+                key="devint-panel"
+                className="absolute top-0 h-full bg-black text-stone-100 p-8 md:p-12 flex items-center"
+                style={{
+                  left: "33.33%",
+                  width: "66.66%",
+                }} // Covers col 1, 2 with no gap
+                variants={sidePanelFromLeft}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <DomainContent {...domains[0]} />
+              </motion.div>
+            )}
+
+            {/* Case 2: Hovering Column 1 (IRIS) - Split Panel */}
+            {hoveredIndex === 1 && (
+              <>
+                {/* Left Panel (covers Col 0) */}
+                <motion.div
+                  key="iris-panel-left"
+                  className="absolute top-0 h-full w-[33.33%] bg-black text-stone-100 p-8 md:p-12 flex flex-col justify-center items-end"
+                  style={{ left: "0%" }}
+                  variants={centerPanelLeft}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
+                  <div className="w-full max-w-sm pl-4">
+                    <h3
+                      className="font-bold text-white mb-2"
+                      style={{ fontSize: "clamp(1.5rem, 4vw, 3rem)" }}
+                    >
+                      {domains[1].name}
+                    </h3>
+                    <p
+                      className="text-stone-300 font-semibold mb-8"
+                      style={{ fontSize: "clamp(0.875rem, 2vw, 1.25rem)" }}
+                    >
+                      {domains[1].tagline}
                     </p>
-
                     <motion.div whileHover={{ x: 5 }}>
                       <Link
-                        href={ctaPath}
-                        className="inline-flex items-center space-x-2 text-[#ffd000] hover:text-[#ff9900] transition-colors font-semibold"
+                        href={domains[1].ctaPath}
+                        className="inline-flex items-center space-x-2 text-stone-300 hover:text-stone-100 transition-colors font-semibold"
+                        style={{ fontSize: "clamp(0.75rem, 1.5vw, 1.125rem)" }}
                       >
-                        <span>{ctaText}</span>
-                        <ArrowRight className="h-4 w-4" />
+                        <span>{domains[1].ctaText}</span>
+                        <ArrowRight className="h-5 w-5" />
                       </Link>
                     </motion.div>
                   </div>
-                </div>
-              )
-          )}
-        </div>
+                </motion.div>
 
-        <div className="flex gap-4 mt-12">
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            onClick={prevDomain}
-            className="border-2 border-[#540000] bg-[#540000] hover:bg-stone-200 inline-flex items-center justify-center size-11 rounded-full text-stone-200 hover:text-[#540000] transition-colors"
-          >
-            <ArrowLeft className="size-6" />
-          </motion.button>
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            onClick={nextDomain}
-            className="border-2 border-[#540000] bg-[#540000] hover:bg-stone-200 inline-flex items-center justify-center size-11 rounded-full text-stone-200 hover:text-[#540000] transition-colors"
-          >
-            <ArrowRight className="size-6" />
-          </motion.button>
-        </div>
+                {/* Right Panel (covers Col 2) */}
+                <motion.div
+                  key="iris-panel-right"
+                  className="absolute top-0 h-full w-[33.33%] bg-black text-stone-100 p-8 md:p-12 flex flex-col justify-center items-start"
+                  style={{ right: "0%" }}
+                  variants={centerPanelRight}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
+                  <div className="w-full max-w-sm pr-4">
+                    <p
+                      className="text-stone-300 leading-relaxed"
+                      style={{ fontSize: "clamp(0.875rem, 2.5vw, 1.5rem)" }}
+                    >
+                      {domains[1].quote}
+                    </p>
+                  </div>
+                </motion.div>
+              </>
+            )}
 
-        {/* Division Indicators */}
-        <div className="flex justify-center space-x-2 mt-8">
-          {domains.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentDomain(index)}
-              className={`w-3 h-3 rounded-full transition-colors ${
-                index === currentDomain ? "bg-[#540000]" : "bg-gray-400"
-              }`}
-            />
-          ))}
+            {/* Case 3: Hovering Column 2 (BIONIC) */}
+            {hoveredIndex === 2 && (
+              <motion.div
+                key="bionic-panel"
+                className="absolute top-0 h-full bg-black text-stone-100 p-8 md:p-12 flex items-center"
+                style={{ left: "0%", width: "66.66%" }} // Covers col 0, 1 with no gap
+                variants={sidePanelFromRight}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <DomainContent {...domains[2]} />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </section>

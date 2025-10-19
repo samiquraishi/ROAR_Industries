@@ -17,7 +17,7 @@ const Hero: FC = () => {
       </video>
 
       {/* Black overlay with blend mode */}
-      <div className="relative z-10 bg-black mix-blend-darken">
+      <div className="relative z-10 bg-stone-950 mix-blend-darken">
         <h1
           className="
             pt-24 font-extrabold text-white
