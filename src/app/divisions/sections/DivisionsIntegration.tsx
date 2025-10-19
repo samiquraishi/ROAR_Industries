@@ -63,7 +63,7 @@ const DivisionsIntegration: FC = () => {
           </h2>
           {/* Updated Subheading */}
           <p className="text-stone-600 text-base md:text-xl lg:text-2xl">
-            Our divisions don't just work alongside each other, they work
+            Our divisions don&apos;t just work alongside each other, they work
             together. <br className="hidden md:block" />
             This integrated approach ensures cohesive execution and maximum
             impact.

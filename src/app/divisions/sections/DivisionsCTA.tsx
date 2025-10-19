@@ -28,9 +28,9 @@ const DivisionsCTA: FC = () => {
               className="text-stone-300 text-base md:text-xl lg:text-2xl leading-relaxed whitespace-pre-line"
               style={{ fontSize: "clamp(1rem, 2.5vw, 1.5rem)" }}
             >
-              Whether you need one division or the complete ecosystem, we're
-              ready to help you achieve extraordinary growth. Let's discuss
-              which approach is right for your business.
+              Whether you need one division or the complete ecosystem,
+              we&apos;re ready to help you achieve extraordinary growth.
+              Let&apos;s discuss which approach is right for your business.
             </p>
           </div>
 
