@@ -11,7 +11,7 @@ export default function Home() {
     // Show loading screen for exactly 3 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1200);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -25,7 +25,7 @@ export default function Home() {
             initial={{ opacity: 1 }}
             exit={{ y: "100vh", opacity: 0 }}
             transition={{
-              y: { duration: 1, delay: 1.2, ease: "easeInOut" },
+              y: { duration: 1.5, delay: 1, ease: "easeInOut" },
               opacity: { duration: 0.1, delay: 2.5 },
             }}
             className="fixed inset-0 z-50 bg-black text-white flex items-center justify-center"
@@ -57,7 +57,7 @@ export default function Home() {
                 exit={{ y: -40, opacity: 0 }}
                 transition={{
                   duration: 0.2,
-                  delay: 0.3,
+                  delay: 0.2,
                   ease: "easeOut",
                 }}
                 className="inline-block"
@@ -70,7 +70,7 @@ export default function Home() {
                 exit={{ y: -40, opacity: 0 }}
                 transition={{
                   duration: 0.2,
-                  delay: 0.5,
+                  delay: 0.3,
                   ease: "easeOut",
                 }}
                 className="inline-block"
@@ -83,7 +83,7 @@ export default function Home() {
                 exit={{ y: -40, opacity: 0 }}
                 transition={{
                   duration: 0.2,
-                  delay: 0.7,
+                  delay: 0.4,
                   ease: "easeOut",
                 }}
                 className="inline-block"
@@ -95,8 +95,8 @@ export default function Home() {
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ y: -50, opacity: 0 }}
                 transition={{
-                  duration: 0.3,
-                  delay: 0.9,
+                  duration: 0.2,
+                  delay: 0.5,
                   ease: "easeOut",
                 }}
                 className="inline-block"

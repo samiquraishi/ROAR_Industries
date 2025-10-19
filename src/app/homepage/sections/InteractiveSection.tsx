@@ -65,12 +65,20 @@ const InteractiveSection: FC = () => {
               // Apply the blend mode directly to the animated element
               className="fixed pointer-events-none z-50 mix-blend-difference"
               initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              style={{
+              animate={{
+                opacity: 1,
+                scale: 1,
                 left: mousePosition.x + 20,
                 top: mousePosition.y - 20,
+              }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{
+                duration: 0.3,
+                ease: "easeOut",
+                left: { type: "spring", damping: 25, stiffness: 200 },
+                top: { type: "spring", damping: 25, stiffness: 200 },
+              }}
+              style={{
                 transform: "translate(-50%, -50%)",
               }}
             >
