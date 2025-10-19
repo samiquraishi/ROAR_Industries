@@ -1,97 +1,229 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useState } from "react";
 import { motion } from "framer-motion";
-import { Target, BarChart3, Code, Camera, TrendingUp, Users } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 const FrameworkProcessFlow: FC = () => {
+  const [hoveredStep, setHoveredStep] = useState<number | null>(null);
+
+  // Removed 'color' property
   const frameworkSteps = [
     {
       step: 1,
-      title: 'Building Business Strategy',
-      division: 'BIONIC MEDIA',
-      icon: Target
+      title: "Building Business Strategy",
+      division: "BIONIC MEDIA",
+      divisionPath: "/divisions/bionic",
     },
     {
       step: 2,
-      title: 'Research & Analytics',
-      division: 'DEVINT',
-      icon: BarChart3
+      title: "Research & Analytics",
+      division: "DEVINT",
+      divisionPath: "/divisions/devint",
     },
     {
       step: 3,
-      title: 'Technology Design & Development',
-      division: 'DEVINT',
-      icon: Code
+      title: "Technology Design & Development",
+      division: "DEVINT",
+      divisionPath: "/divisions/devint",
     },
     {
       step: 4,
-      title: 'Creative Content Production & Direction',
-      division: 'IRIS STUDIO',
-      icon: Camera
+      title: "Creative Content Production",
+      division: "IRIS STUDIO",
+      divisionPath: "/divisions/iris",
     },
     {
       step: 5,
-      title: 'Brand Management & Marketing',
-      division: 'BIONIC MEDIA',
-      icon: TrendingUp
+      title: "Brand Management & Marketing",
+      division: "BIONIC MEDIA",
+      divisionPath: "/divisions/bionic",
     },
     {
       step: 6,
-      title: 'Reviewing Growth & Performance',
-      division: 'All Divisions',
-      icon: Users
-    }
+      title: "Reviewing Growth & Performance",
+      division: "All Divisions",
+      divisionPath: "/divisions",
+    },
   ];
 
+  // Variants for staggering the grid items
+  const gridVariants = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // Each child will animate 0.2s after the previous
+        delayChildren: 0.8, // Wait for the timeline to draw
+      },
+    },
+  };
+
+  // Variants for each item in the grid
+  const itemVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <section className="py-24 bg-white">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">
-            Integrated Process Flow
+    <section className="pt-28 pb-48 md:pb-56 bg-stone-200 overflow-x-hidden">
+      <div className="max-w-full px-4 md:px-8">
+        <div className=" mb-16 md:mb-24">
+          {/* Updated Heading */}
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-stone-800 mb-6">
+            Integrated Process
+            <br className="hidden md:block" /> Flow
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our divisions work together seamlessly, ensuring no gaps in your growth journey. 
-            Each step informs and enhances the next, creating a powerful multiplier effect.
+          {/* Updated Subheading */}
+          <p className="text-stone-600 text-base md:text-xl lg:text-2xl ">
+            Our divisions work together seamlessly, ensuring no gaps in your
+            growth journey. <br className="hidden md:block" /> Each step informs
+            and enhances the next, creating a powerful multiplier effect.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="relative">
-          {/* Process Flow Visualization */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {frameworkSteps.map((step, index) => (
-              <motion.div
-                key={step.step}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 bg-gradient-to-br from-[#ffd000] to-[#ff9900] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-black font-semibold text-lg">
-                    {step.step}
-                  </span>
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 mb-2">
-                  {step.title.split(' ').slice(0, 2).join(' ')}
-                </h3>
-                <p className="text-xs text-gray-500">
-                  {step.division}
-                </p>
-              </motion.div>
-            ))}
+        {/* --- Desktop Flow (New Animation) --- */}
+        <div className="hidden lg:block">
+          <div className="relative">
+            {/* 1. Animated Connecting Line (Timeline) */}
+            <motion.div
+              className="absolute top-8 left-0 right-0 h-0.5 bg-stone-400"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
+              style={{ transformOrigin: "left" }}
+            />
+
+            {/* 2. Steps Grid (Staggered Children) */}
+            <motion.div
+              className="grid grid-cols-6 pt-20" // pt-24 (6rem) for more gap
+              variants={gridVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {frameworkSteps.map((step) => (
+                <motion.div
+                  key={step.step}
+                  className="relative text-center cursor-pointer"
+                  variants={itemVariants} // This item will be staggered
+                  onMouseEnter={() => setHoveredStep(step.step)}
+                  onMouseLeave={() => setHoveredStep(null)}
+                >
+                  {/* Dropping Line */}
+                  <motion.div
+                    className="absolute -top-12 left-1/2 -translate-x-1/2 w-0.5 bg-stone-400"
+                    initial={{ height: 0 }}
+                    animate={{ height: "3rem" }} // 3rem (h-12)
+                    transition={{ duration: 0.4, ease: "circOut", delay: 0.3 }}
+                  />
+
+                  {/* Step Card (Text Only) */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4, delay: 0.5 }}
+                  >
+                    {/* Step Info */}
+                    <div>
+                      <h3 className="text-sm font-semibold text-stone-800 mt-4 mb-2 leading-tight">
+                        <span className="block">
+                          {step.title.split(" ").slice(0, -1).join(" ")}
+                        </span>
+                        <span className="block">
+                          {step.title.split(" ").slice(-1)[0]}
+                        </span>
+                      </h3>
+                      <p className="text-xs text-stone-500 mb-2">
+                        {step.division}
+                      </p>
+                      <Link
+                        href={step.divisionPath}
+                        className="inline-flex items-center space-x-1 text-xs text-stone-600 hover:text-stone-800 transition-all hover:translate-x-1"
+                      >
+                        <span>Learn more</span>
+                        <ArrowUpRight className="h-3 w-3" />
+                      </Link>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
+        </div>
 
-          {/* Connecting Lines */}
-          <div className="hidden lg:block absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-[#ffd000] via-[#ff9900] to-[#ffd000] opacity-30" />
+        {/* --- Mobile Flow (Vertical Timeline) --- */}
+        <div className="lg:hidden">
+          <div className="relative">
+            {/* Vertical Timeline */}
+            <motion.div
+              className="absolute left-8 top-0 bottom-0 w-0.5 bg-stone-400"
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
+              style={{ transformOrigin: "top" }}
+            />
+
+            {/* Steps Grid (Vertical) */}
+            <motion.div
+              className="space-y-12 pl-16"
+              variants={gridVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {frameworkSteps.map((step) => (
+                <motion.div
+                  key={step.step}
+                  className="relative"
+                  variants={itemVariants}
+                  onMouseEnter={() => setHoveredStep(step.step)}
+                  onMouseLeave={() => setHoveredStep(null)}
+                >
+                  {/* Horizontal Connecting Line */}
+                  <motion.div
+                    className="absolute -left-8 top-4 w-12 h-0.5 bg-stone-400"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ duration: 0.4, delay: 0.3 }}
+                    viewport={{ once: true }}
+                    style={{ transformOrigin: "left" }}
+                  />
+
+                  {/* Step Card */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4, delay: 0.5 }}
+                  >
+                    <div className="ml-8">
+                      <h3 className="text-sm font-semibold text-stone-800 mb-1 leading-tight">
+                        <span className="block">
+                          {step.title.split(" ").slice(0, -1).join(" ")}
+                        </span>
+                        <span className="block">
+                          {step.title.split(" ").slice(-1)[0]}
+                        </span>
+                      </h3>
+                      <p className="text-xs text-stone-500 mb-2">
+                        {step.division}
+                      </p>
+                      <Link
+                        href={step.divisionPath}
+                        className="inline-flex items-center space-x-1 text-xs text-stone-600 hover:text-stone-800 transition-all hover:translate-x-1"
+                      >
+                        <span>Learn more</span>
+                        <ArrowUpRight className="h-3 w-3" />
+                      </Link>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
