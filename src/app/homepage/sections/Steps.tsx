@@ -10,10 +10,7 @@ type FrameworkStep = {
   text: string;
 };
 
-const StepCard: FC<{ item: FrameworkStep; index: number }> = ({
-  item,
-  index,
-}) => {
+const StepCard: FC<{ item: FrameworkStep }> = ({ item }) => {
   return (
     <div className="mt-16 md:mt-28">
       {/* Top Divider */}
@@ -91,7 +88,7 @@ const Steps: FC = () => {
         {/* Steps Content */}
         <div>
           {frameworkData.map((item, index) => (
-            <StepCard key={item.id} item={item} index={index} />
+            <StepCard key={item.id} item={item} />
           ))}
         </div>
 
