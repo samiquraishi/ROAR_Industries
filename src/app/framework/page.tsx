@@ -9,12 +9,12 @@ export default function Framework() {
   return (
     <>
       <Header />
-      <div className="pt-20">
+      
         <FrameworkHero />
         <FrameworkSteps />
         <FrameworkProcessFlow />
         <FrameworkCTA />
-      </div>
+      
       <Footer />
     </>
   );

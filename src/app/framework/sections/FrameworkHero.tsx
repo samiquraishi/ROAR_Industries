@@ -4,7 +4,7 @@ import { FC } from "react";
 
 const FrameworkHero: FC = () => {
   return (
-    <section className="relative w-full -mt-20 bg-stone-200">
+    <section className="relative w-full  bg-stone-200">
       {/* SECTION 1: The initial view. */}
       <div className="h-screen flex flex-col items-center justify-end pb-8 md:pb-16 lg:pb-24">
         <h1 className="text-center font-extrabold leading-[0.9]">

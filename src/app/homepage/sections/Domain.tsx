@@ -119,18 +119,18 @@ const DomainContent: FC<DomainContentProps> = ({
   ctaText,
   ctaPath,
 }) => (
-  <div className="grid md:grid-cols-2 gap-8 lg:gap-16 max-w-4xl mx-auto">
+  <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-16 max-w-3xl md:max-w-4xl mx-auto">
     {/* Col 1: Title, Tag, CTA */}
     <div className="flex flex-col justify-center">
       <h3
         className="font-bold text-white mb-2"
-        style={{ fontSize: "clamp(1.5rem, 4vw, 3rem)" }}
+        style={{ fontSize: "clamp(1.25rem, 3vw, 2.5rem)" }}
       >
         {name}
       </h3>
       <p
-        className="text-stone-300 font-semibold mb-8"
-        style={{ fontSize: "clamp(0.875rem, 2vw, 1.25rem)" }}
+        className="text-stone-300 font-semibold mb-6 md:mb-8"
+        style={{ fontSize: "clamp(0.75rem, 1.5vw, 1rem)" }}
       >
         {tagline}
       </p>
@@ -138,10 +138,10 @@ const DomainContent: FC<DomainContentProps> = ({
         <Link
           href={ctaPath}
           className="inline-flex items-center space-x-2 text-stone-300 hover:text-stone-100 transition-colors font-semibold"
-          style={{ fontSize: "clamp(0.75rem, 1.5vw, 1.125rem)" }}
+          style={{ fontSize: "clamp(0.625rem, 1.2vw, 0.875rem)" }}
         >
           <span>{ctaText}</span>
-          <ArrowRight className="h-5 w-5" />
+          <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
         </Link>
       </motion.div>
     </div>
@@ -149,7 +149,7 @@ const DomainContent: FC<DomainContentProps> = ({
     <div className="flex items-center">
       <p
         className="text-stone-300 leading-relaxed"
-        style={{ fontSize: "clamp(0.875rem, 2.5vw, 1.5rem)" }}
+        style={{ fontSize: "clamp(0.75rem, 2vw, 1.25rem)" }}
       >
         {quote}
       </p>
@@ -183,7 +183,7 @@ const Domain: FC = () => {
 
   return (
     <section className="bg-stone-200 py-24 md:py-32 ">
-      <div className="max-w-full px-4 md:px-8">
+      <div className="max-w-full px-4 md:px-4 lg:px-8">
         {/* Heading */}
         <div className="mb-8 md:mb-16">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-stone-800 mb-8">
@@ -251,7 +251,7 @@ const Domain: FC = () => {
           onMouseLeave={() => setHoveredIndex(null)}
         >
           {/* Layer 1: The three-column image grid */}
-          <div className="grid grid-cols-3 h-full gap-2 md:gap-3 lg:gap-4">
+          <div className="grid grid-cols-3 h-full gap-2 md:gap-2 lg:gap-4">
             {domains.map((domain, index) => (
               <div
                 key={domain.name}
@@ -324,16 +324,16 @@ const Domain: FC = () => {
                   animate="animate"
                   exit="exit"
                 >
-                  <div className="w-full max-w-sm pl-4">
+                  <div className="w-full max-w-xs md:max-w-sm pl-4">
                     <h3
                       className="font-bold text-white mb-2"
-                      style={{ fontSize: "clamp(1.5rem, 4vw, 3rem)" }}
+                      style={{ fontSize: "clamp(1.25rem, 3vw, 2.5rem)" }}
                     >
                       {domains[1].name}
                     </h3>
                     <p
-                      className="text-stone-300 font-semibold mb-8"
-                      style={{ fontSize: "clamp(0.875rem, 2vw, 1.25rem)" }}
+                      className="text-stone-300 font-semibold mb-6 md:mb-8"
+                      style={{ fontSize: "clamp(0.75rem, 1.5vw, 1rem)" }}
                     >
                       {domains[1].tagline}
                     </p>
@@ -341,10 +341,10 @@ const Domain: FC = () => {
                       <Link
                         href={domains[1].ctaPath}
                         className="inline-flex items-center space-x-2 text-stone-300 hover:text-stone-100 transition-colors font-semibold"
-                        style={{ fontSize: "clamp(0.75rem, 1.5vw, 1.125rem)" }}
+                        style={{ fontSize: "clamp(0.625rem, 1.2vw, 0.875rem)" }}
                       >
                         <span>{domains[1].ctaText}</span>
-                        <ArrowRight className="h-5 w-5" />
+                        <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
                       </Link>
                     </motion.div>
                   </div>
@@ -360,10 +360,10 @@ const Domain: FC = () => {
                   animate="animate"
                   exit="exit"
                 >
-                  <div className="w-full max-w-sm pr-4">
+                  <div className="w-full max-w-xs md:max-w-sm pr-4">
                     <p
                       className="text-stone-300 leading-relaxed"
-                      style={{ fontSize: "clamp(0.875rem, 2.5vw, 1.5rem)" }}
+                      style={{ fontSize: "clamp(0.75rem, 2vw, 1.25rem)" }}
                     >
                       {domains[1].quote}
                     </p>
