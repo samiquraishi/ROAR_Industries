@@ -1,13 +1,11 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 const FrameworkProcessFlow: FC = () => {
-  const [hoveredStep, setHoveredStep] = useState<number | null>(null);
-
   // Removed 'color' property
   const frameworkSteps = [
     {
@@ -109,8 +107,6 @@ const FrameworkProcessFlow: FC = () => {
                   key={step.step}
                   className="relative text-center cursor-pointer"
                   variants={itemVariants} // This item will be staggered
-                  onMouseEnter={() => setHoveredStep(step.step)}
-                  onMouseLeave={() => setHoveredStep(null)}
                 >
                   {/* Dropping Line */}
                   <motion.div
@@ -180,8 +176,6 @@ const FrameworkProcessFlow: FC = () => {
                   key={step.step}
                   className="relative"
                   variants={itemVariants}
-                  onMouseEnter={() => setHoveredStep(step.step)}
-                  onMouseLeave={() => setHoveredStep(null)}
                 >
                   {/* Horizontal Connecting Line */}
                   <motion.div
