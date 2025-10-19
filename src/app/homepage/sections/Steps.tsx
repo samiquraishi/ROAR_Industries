@@ -87,7 +87,7 @@ const Steps: FC = () => {
 
         {/* Steps Content */}
         <div>
-          {frameworkData.map((item, index) => (
+          {frameworkData.map((item) => (
             <StepCard key={item.id} item={item} />
           ))}
         </div>
