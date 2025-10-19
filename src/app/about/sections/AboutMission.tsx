@@ -1,9 +1,6 @@
 "use client";
 
 import { FC } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import ourMissionImage from "@/assets/images/ourMission.jpg";
 
 const AboutMission: FC = () => {
   return (
@@ -73,7 +70,6 @@ const AboutMission: FC = () => {
               </p>
             </div>
           </div>
-
         </div>
       </div>
     </section>
