@@ -1,46 +1,36 @@
 "use client";
 
 import { FC } from "react";
-import { motion } from "framer-motion";
 
 const AboutHero: FC = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
-      <div className="container text-center px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
+    <section className="relative w-full bg-stone-950 min-h-screen">
+      {/* Large Dark Area - Top 65-70% with Large Text */}
+      <div className="h-[100vh] bg-stone-950 flex items-end justify-start relative">
+        {/* Background grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:80px_80px] z-0"></div>
+
+        <h1
+          className="text-stone-200 font-bold leading-tight px-4 pb-8 relative z-10"
+          style={{ fontSize: "clamp(1.5rem, 9vw, 20rem)" }}
         >
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-[#ffd000] text-lg md:text-xl mb-4 tracking-wider font-medium"
-          >
-            ABOUT ROAR INDUSTRIES
-          </motion.p>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight"
-          >
-            Every Great Brand Starts With a ROAR
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
-          >
-            We&apos;re not just another agency. We&apos;re your complete business growth partner, 
-            providing an integrated ecosystem of expertise that transforms visions into victories.
-          </motion.p>
-        </motion.div>
+          Every Great Brand
+          <br />
+          Starts With a ROAR
+        </h1>
+      </div>
+
+      <div className="bg-stone-200 px-4 md:px-8 py-16 md:py-24 lg:py-32 ">
+        <div className="max-w-full">
+          {/* Left-aligned Introduction */}
+          <div className="mb-12 md:mr-56">
+            <h1 className="text-stone-800 text-2xl md:text-3xl lg:text-4xl font-light leading-[1.5] sm:leading-[1.5] md:leading-[1.5] lg:leading-[1.5] xl:leading-[1.5]">
+              We&apos;re not just another agency. We&apos;re your complete
+              business growth partner, providing an integrated ecosystem of
+              expertise that transforms visions into victories.
+            </h1>
+          </div>
+        </div>
       </div>
     </section>
   );

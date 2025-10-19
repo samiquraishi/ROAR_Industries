@@ -2,46 +2,78 @@
 
 import { FC } from "react";
 import { motion } from "framer-motion";
-import { Zap } from "lucide-react";
+import Image from "next/image";
+import ourMissionImage from "@/assets/images/ourMission.jpg";
 
 const AboutMission: FC = () => {
   return (
-    <section className="py-24 bg-white">
-      <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+    <section className="bg-stone-200  pb-24 md:pb-40">
+      <div className="max-w-full px-4 md:px-8">
+        {/* Main Heading */}
+        <div className="mb-8 md:mb-16">
+          <h1
+            className="font-bold text-stone-800 mb-20 flex justify-end uppercase"
+            style={{ fontSize: "clamp(3rem, 13vw, 20rem)" }}
           >
-            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">
-              Our Mission
-            </h2>
-            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
-              To empower businesses of all sizes to achieve extraordinary growth through our 
-              integrated approach that combines strategic thinking, creative excellence, and 
-              technological innovation.
-            </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              We believe that every business has the potential to make a significant impact. 
-              Our role is to provide the expertise, tools, and support needed to unlock that 
-              potential and turn ambitious visions into market-leading realities.
-            </p>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="w-full h-96 bg-gradient-to-br from-[#ffd000]/20 to-[#ff9900]/20 rounded-2xl flex items-center justify-center">
-              <Zap className="h-32 w-32 text-[#ffd000]" />
+            Our Mission
+          </h1>
+        </div>
+
+        {/* Video and Text Layout */}
+        <div className="my-16 md:my-24">
+          <div className="grid grid-cols-1 md:grid-cols-2  items-end">
+            {/* Left Column - Video */}
+            <div className="w-full aspect-video md:w-auto">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="h-full w-full object-contain"
+              >
+                <source src="/videos/about.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
-            <div className="absolute -inset-4 bg-gradient-to-r from-[#ffd000]/20 to-[#ff9900]/20 rounded-2xl blur-xl -z-10" />
-          </motion.div>
+
+            {/* Right Column - Text */}
+            <div className="space-y-4">
+              <p className="text-stone-700 text-lg sm:text2xl md:text-4xl leading-relaxed">
+                We believe that every business has the potential to make a
+                significant impact. Our role is to provide the expertise, tools,
+                and support needed to unlock that potential and turn ambitious
+                visions into market-leading realities.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Mission Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left Column - Text Content */}
+
+          {/* Key Points */}
+          <div className="space-y-3 pt-4">
+            <div className="flex items-start space-x-3">
+              <div className="w-2 h-2 bg-stone-600 rounded-full mt-6 flex-shrink-0"></div>
+              <p className="text-stone-700 text-md md:text-xl lg:text-2xl mt-4">
+                Strategic thinking that drives measurable results
+              </p>
+            </div>
+            <div className="flex items-start space-x-3">
+              <div className="w-2 h-2 bg-stone-600 rounded-full mt-6 flex-shrink-0"></div>
+              <p className="text-stone-700 text-md md:text-xl lg:text-2xl mt-4">
+                Creative excellence that captivates audiences
+              </p>
+            </div>
+            <div className="flex items-start space-x-3">
+              <div className="w-2 h-2 bg-stone-600 rounded-full mt-6 flex-shrink-0"></div>
+              <p className="text-stone-700 text-md md:text-xl lg:text-2xl mt-4">
+                Technological innovation that scales efficiently
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

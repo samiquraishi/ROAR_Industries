@@ -182,12 +182,12 @@ const Domain: FC = () => {
   }, [hoveredIndex]);
 
   return (
-    <section className="bg-stone-200 py-24 md:py-32 ">
+    <section className="bg-stone-200 pt-24 md:pt-32 pb-56">
       <div className="max-w-full px-4 md:px-4 lg:px-8">
         {/* Heading */}
         <div className="mb-8 md:mb-16">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-stone-800 mb-8">
-            Looking for individual services?
+            Looking for individual<br/> services?
           </h1>
           <Link
             href="/divisions"

@@ -27,7 +27,7 @@ const navItems = [
 
 const Footer: FC = () => {
   return (
-    <footer className="bg-stone-950 text-stone-100 relative overflow-hidden">
+    <footer className="bg-stone-950 text-stone-100 relative overflow-hidden z-20">
       {/* Top divider line aligned with grid */}
       <div className="h-px bg-stone-700 mx-12 mb-3"></div>
 
@@ -47,7 +47,7 @@ const Footer: FC = () => {
             <div className="md:col-span-2">
               <h2
                 className="text-stone-100 font-light mt-8"
-                style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+                style={{ fontSize: "clamp(2.5rem, 6vw, 9rem)" }}
               >
                 Take this <span className="text-stone-300">opportunity</span>{" "}
                 and grow your business.
