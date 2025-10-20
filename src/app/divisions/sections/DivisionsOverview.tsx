@@ -107,7 +107,7 @@ const DivisionCard: FC<{ division: (typeof divisions)[0]; index: number }> = ({
             </div>
 
             {/* Divider */}
-            <hr className="my-8 border-stone-700/60" />
+            <hr className="my-8 border-stone-600/60" />
 
             {/* Services */}
             <div>
