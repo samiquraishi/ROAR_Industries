@@ -11,9 +11,11 @@ export default function Divisions() {
       <Header />
       
         <DivisionsHero />
-        <DivisionsOverview />
-        <DivisionsIntegration />
-        <DivisionsCTA />
+        
+          <DivisionsOverview />
+          <DivisionsIntegration />
+          <DivisionsCTA />
+        
       
       <Footer />
     </>
