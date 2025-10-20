@@ -17,7 +17,7 @@ const IrisHero: FC = () => {
       </video>
 
       {/* Black overlay with blend mode (homepage style) */}
-      <div className="relative z-10 bg-stone-950 mix-blend-darken">
+      <div className="relative z-10 bg-stone-950 mix-blend-darken pt-64 md:pt-20 lg:pt-10 xl:pt-0">
         {/* Grid background overlay like footer/CTA */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:80px_80px] z-0"></div>
 
@@ -31,8 +31,8 @@ const IrisHero: FC = () => {
             <span
               className="block text-center"
               style={{
-                fontSize: "clamp(5rem, 35vw, 40rem)",
-                letterSpacing: "2.5rem",
+                fontSize: "clamp(5rem, 38vw, 40rem)",
+                letterSpacing: "",
               }}
             >
               IRIS
