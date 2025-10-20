@@ -46,7 +46,7 @@ const ContactCTA: FC = () => {
               <ArrowUpRight className="h-5 w-5" />
             </Link>
             <Link
-              href="tel:+919876543210"
+              href="tel:+917579297931"
               className="inline-flex items-center space-x-2 text-stone-300 hover:text-stone-100 transition-colors font-medium"
               style={{ fontSize: "clamp(0.875rem, 1.5vw, 1.125rem)" }}
             >

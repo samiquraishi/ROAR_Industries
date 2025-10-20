@@ -5,42 +5,75 @@ import { motion } from "framer-motion";
 
 const DevintTechnologies: FC = () => {
   const technologies = [
-    'React', 'Node.js', 'Python', 'Java', 'C#', 'AWS', 'Azure', 'Docker', 
-    'Kubernetes', 'MongoDB', 'PostgreSQL', 'TensorFlow', 'PyTorch'
+    "React",
+    "Next.js",
+    "Three.js",
+    "Vue.js",
+    "Angular",
+    "Webpack",
+    "Node.js",
+    "Python",
+    "Java",
+    "C++",
+    "C#",
+    "PHP",
+    "Express.js",
+    "React Native",
+    "Flutter",
+    "Swift",
+    "Kotlin",
+    "GitLab",
+    "GitHub",
+    "TensorFlow",
+    "PyTorch",
+    "OpenCV",
+    "Hugging Face",
+    "Pandas",
+    "NumPy",
+    "Keras",
+    "AWS",
+    "Azure",
+    "Google Cloud",
+    "Docker",
+    "Kubernetes",
+    "Jenkins",
+    "PostgreSQL",
+    "MongoDB",
+    "MySQL",
+    "Firebase",
+    "Supabase",
   ];
 
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">
+    <section className="bg-stone-200 pt-40 pb-24 md:pb-40">
+      <div className="max-w-full px-4 md:px-8">
+        {/* Main Heading */}
+        <div className="mb-8 md:mb-16 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-stone-800 mb-4">
             Technologies We Master
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our team stays at the forefront of technology trends, ensuring your solutions 
-            are built with the most effective and future-proof technologies available.
+          </h1>
+          <p className="text-stone-600 text-base md:text-xl lg:text-2xl leading-relaxed max-w-4xl mx-auto">
+            Cutting-edge technologies and frameworks that power modern digital
+            solutions and drive innovation across all platforms.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="flex flex-wrap justify-center gap-4">
+        {/* Divider */}
+        <div className="w-full h-px bg-stone-400/70 max-w-6xl mx-auto"></div>
+
+        {/* Technology list as simple text */}
+        <div className="flex flex-wrap justify-center py-10 gap-x-6 gap-y-3 max-w-6xl mx-auto">
           {technologies.map((tech, index) => (
-            <motion.div
+            <motion.span
               key={tech}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
+              initial={{ opacity: 0, y: 4 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25, delay: index * 0.03 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="px-6 py-3 bg-white border border-gray-300 rounded-full text-gray-900 hover:border-[#ffd000] hover:text-[#ffd000] transition-colors shadow-sm"
+              className="text-stone-800 px-4 py-2 text-sm  md:text-base uppercase "
             >
               {tech}
-            </motion.div>
+            </motion.span>
           ))}
         </div>
       </div>

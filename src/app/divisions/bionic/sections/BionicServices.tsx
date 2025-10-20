@@ -1,106 +1,137 @@
 "use client";
 
 import { FC } from "react";
-import { motion } from "framer-motion";
-import { Users, Megaphone, Search, Target, BarChart3, CheckCircle } from "lucide-react";
+import { Check } from "lucide-react";
+
+type BionicService = {
+  id: number;
+  title: string;
+  description: string;
+  points: string[];
+};
+
+const ServiceCard: FC<{ item: BionicService }> = ({ item }) => {
+  return (
+    <div className="mt-16 md:mt-28">
+      <div className="w-full h-px bg-stone-400 mb-3"></div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+        <div>
+          <h2 className="text-md md:text-lg font-semibold text-stone-800 leading-tight whitespace-pre-line mb-3">
+            {item.title}
+          </h2>
+          <p className="text-stone-700 text-sm md:text-base leading-relaxed whitespace-pre-line">
+            {item.description}
+          </p>
+        </div>
+        <div className="pr-8 sm:pr-16 md:pr-16 lg:pr-48 xl:pr-72">
+          <ul className="space-y-2">
+            {item.points.map((point, index) => (
+              <li
+                key={index}
+                className="flex items-start space-x-3 text-stone-800 text-sm md:text-base"
+              >
+                <Check className="h-4 w-4 text-stone-600 mt-0.5 flex-shrink-0" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const bionicServicesData: BionicService[] = [
+  {
+    id: 1,
+    title: "Brand Strategy & Positioning",
+    description:
+      "Comprehensive brand strategy development that positions your business\n for market leadership and sustainable growth.",
+    points: [
+      "Brand Identity",
+      "Market Positioning",
+      "Competitive Analysis",
+      "Brand Guidelines",
+    ],
+  },
+  {
+    id: 2,
+    title: "Social Media Management",
+    description:
+      "Strategic social media management that builds engaged communities\n and drives meaningful interactions with your audience.",
+    points: [
+      "Content Strategy",
+      "Community Management",
+      "Influencer Partnerships",
+      "Performance Analytics",
+    ],
+  },
+  {
+    id: 3,
+    title: "Digital Marketing Campaigns",
+    description:
+      "Data-driven digital marketing campaigns that reach your target audience\n and deliver measurable results.",
+    points: [
+      "Paid Advertising",
+      "Email Marketing",
+      "Content Marketing",
+      "Conversion Optimization",
+    ],
+  },
+  {
+    id: 4,
+    title: "SEO & Content Marketing",
+    description:
+      "Search engine optimization and content strategies that improve visibility\n and drive organic traffic.",
+    points: [
+      "Keyword Research",
+      "Content Creation",
+      "Link Building",
+      "Technical SEO",
+    ],
+  },
+  {
+    id: 5,
+    title: "Public Relations",
+    description:
+      "Strategic PR and communications that build brand reputation\n and establish thought leadership.",
+    points: [
+      "Media Relations",
+      "Crisis Management",
+      "Press Releases",
+      "Industry Partnerships",
+    ],
+  },
+  {
+    id: 6,
+    title: "Performance Analytics",
+    description:
+      "Comprehensive analytics and reporting that provide insights into campaign\n performance and ROI optimization.",
+    points: [
+      "Data Analysis",
+      "ROI Tracking",
+      "Performance Reports",
+      "Strategy Optimization",
+    ],
+  },
+];
 
 const BionicServices: FC = () => {
-  const services = [
-    {
-      title: 'Brand Strategy & Positioning',
-      description: 'Comprehensive brand strategy development that positions your business for market leadership and sustainable growth.',
-      features: ['Brand Identity', 'Market Positioning', 'Competitive Analysis', 'Brand Guidelines'],
-      icon: Target
-    },
-    {
-      title: 'Social Media Management',
-      description: 'Strategic social media management that builds engaged communities and drives meaningful interactions with your audience.',
-      features: ['Content Strategy', 'Community Management', 'Influencer Partnerships', 'Performance Analytics'],
-      icon: Users
-    },
-    {
-      title: 'Digital Marketing Campaigns',
-      description: 'Data-driven digital marketing campaigns that reach your target audience and deliver measurable results.',
-      features: ['Paid Advertising', 'Email Marketing', 'Content Marketing', 'Conversion Optimization'],
-      icon: Megaphone
-    },
-    {
-      title: 'SEO & Content Marketing',
-      description: 'Search engine optimization and content marketing strategies that improve visibility and drive organic traffic.',
-      features: ['Keyword Research', 'Content Creation', 'Link Building', 'Technical SEO'],
-      icon: Search
-    },
-    {
-      title: 'Public Relations',
-      description: 'Strategic PR and communications that build brand reputation and establish thought leadership in your industry.',
-      features: ['Media Relations', 'Crisis Management', 'Press Releases', 'Industry Partnerships'],
-      icon: Megaphone
-    },
-    {
-      title: 'Performance Analytics',
-      description: 'Comprehensive analytics and reporting that provide insights into campaign performance and ROI optimization.',
-      features: ['Data Analysis', 'ROI Tracking', 'Performance Reports', 'Strategy Optimization'],
-      icon: BarChart3
-    }
-  ];
-
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">
-            Our Marketing Services
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We combine strategic thinking with creative execution to deliver marketing solutions 
-            that not only look great but also drive real business growth and ROI.
+    <section className="bg-stone-200 pt-48 lg:pt-56 pb-24 md:pb-40">
+      <div className="max-w-full px-4 md:px-8">
+        <div className="mb-8 md:mb-16">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-stone-800 mb-4">
+            Our Marketing<br/> Services
+          </h1>
+          <p className="text-stone-600 text-base md:text-xl lg:text-2xl leading-relaxed">
+            We combine strategic thinking with creative execution to deliver
+            marketing solutions that drive measurable growth and ROI.
           </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              className="bg-white p-8 rounded-xl shadow-lg group hover:shadow-xl transition-shadow"
-            >
-              {/* Icon */}
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#ffd000] to-[#ff9900] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <service.icon className="h-6 w-6 text-black" />
-                </div>
-              </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-semibold text-gray-900 group-hover:text-[#ffd000] transition-colors mb-3">
-                {service.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                {service.description}
-              </p>
-
-              {/* Features */}
-              <div className="space-y-2">
-                {service.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4 text-[#ffd000] flex-shrink-0" />
-                    <span className="text-sm text-gray-600">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+        </div>
+        <div>
+          {bionicServicesData.map((item) => (
+            <ServiceCard key={item.id} item={item} />
           ))}
         </div>
       </div>

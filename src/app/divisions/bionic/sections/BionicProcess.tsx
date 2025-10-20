@@ -7,68 +7,161 @@ const BionicProcess: FC = () => {
   const processSteps = [
     {
       step: 1,
-      title: 'Research & Analysis',
-      description: 'Deep market research and audience analysis to inform strategic decisions.'
+      title: "Discovery & Strategy",
+      description: "Understand goals, audience, and market fit.",
     },
     {
       step: 2,
-      title: 'Strategy Development',
-      description: 'Comprehensive strategy development that aligns with your business objectives.'
+      title: "Campaign Planning",
+      description: "Define channels, messaging, and creative direction.",
     },
     {
       step: 3,
-      title: 'Campaign Execution',
-      description: 'Professional execution of marketing campaigns across all relevant channels.'
+      title: "Execution",
+      description: "Launch campaigns with continuous optimization.",
     },
     {
       step: 4,
-      title: 'Optimization & Growth',
-      description: 'Continuous optimization and scaling to maximize results and ROI.'
-    }
+      title: "Measurement",
+      description: "Report results and iterate based on insights.",
+    },
   ];
 
-  return (
-    <section className="py-24 bg-white">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">
-            Our Marketing Process
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A systematic approach that ensures every marketing initiative delivers maximum impact 
-            and drives sustainable business growth.
-          </p>
-        </motion.div>
+  const gridVariants = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.8 },
+    },
+  } as const;
+  const itemVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+  } as const;
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {processSteps.map((step, index) => (
+  return (
+    <section className="pt-28 pb-48 md:pb-56 bg-stone-200 overflow-x-hidden">
+      <div className="max-w-full px-4 md:px-8">
+        <div className="mb-16 md:mb-24">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-stone-800 mb-6">
+            Marketing
+            <br className="hidden md:block" /> Process
+          </h2>
+          <p className="text-stone-600 text-base md:text-xl lg:text-2xl">
+            A proven approach that drives consistent brand growth.
+          </p>
+        </div>
+
+        {/* Desktop timeline */}
+        <div className="hidden lg:block">
+          <div className="relative">
             <motion.div
-              key={step.step}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="absolute top-8 left-0 right-0 h-0.5 bg-stone-400"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              className="text-center"
+              transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
+              style={{ transformOrigin: "left" }}
+            />
+            <motion.div
+              className="grid grid-cols-4 pt-20"
+              variants={gridVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-[#ffd000] to-[#ff9900] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-black font-semibold text-lg">
-                  {step.step}
-                </span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                {step.title}
-              </h3>
-              <p className="text-gray-600">
-                {step.description}
-              </p>
+              {processSteps.map((step) => (
+                <motion.div
+                  key={step.step}
+                  className="relative text-center"
+                  variants={itemVariants}
+                >
+                  <motion.div
+                    className="absolute -top-12 left-1/2 -translate-x-1/2 w-0.5 bg-stone-400"
+                    initial={{ height: 0 }}
+                    animate={{ height: "3rem" }}
+                    transition={{ duration: 0.4, ease: "circOut", delay: 0.3 }}
+                  />
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4, delay: 0.5 }}
+                  >
+                    <div>
+                      <h3 className="text-sm font-semibold text-stone-800 mt-4 mb-2 leading-tight">
+                        <span className="block">
+                          {step.title.split(" ").slice(0, -1).join(" ")}
+                        </span>
+                        <span className="block">
+                          {step.title.split(" ").slice(-1)[0]}
+                        </span>
+                      </h3>
+                      <p className="text-xs text-stone-500 mb-2">
+                        {step.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
+          </div>
+        </div>
+
+        {/* Mobile vertical timeline */}
+        <div className="lg:hidden">
+          <div className="relative">
+            <motion.div
+              className="absolute left-8 top-0 bottom-0 w-0.5 bg-stone-400"
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
+              style={{ transformOrigin: "top" }}
+            />
+            <motion.div
+              className="space-y-12 pl-16"
+              variants={gridVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {processSteps.map((step) => (
+                <motion.div
+                  key={step.step}
+                  className="relative"
+                  variants={itemVariants}
+                >
+                  <motion.div
+                    className="absolute -left-8 top-4 w-12 h-0.5 bg-stone-400"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ duration: 0.4, delay: 0.3 }}
+                    viewport={{ once: true }}
+                    style={{ transformOrigin: "left" }}
+                  />
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4, delay: 0.5 }}
+                  >
+                    <div className="ml-8">
+                      <h3 className="text-sm font-semibold text-stone-800 mb-1 leading-tight">
+                        <span className="block">
+                          {step.title.split(" ").slice(0, -1).join(" ")}
+                        </span>
+                        <span className="block">
+                          {step.title.split(" ").slice(-1)[0]}
+                        </span>
+                      </h3>
+                      <p className="text-xs text-stone-500 mb-2">
+                        {step.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

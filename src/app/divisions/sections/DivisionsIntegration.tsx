@@ -170,17 +170,17 @@ const DivisionsIntegration: FC = () => {
                       />
                     </div>
 
-                    <h3 className="text-sm font-semibold text-stone-300 mb-2">
+                    <h3 className="text-sm font-semibold text-stone-200 mb-2">
                       {division.name}
                     </h3>
 
-                    <p className="text-xs text-stone-300 mb-4 leading-relaxed">
+                    <p className="text-xs text-stone-200 mb-4 leading-relaxed">
                       {division.tagline}
                     </p>
 
                     <Link
                       href={division.ctaPath}
-                      className="inline-flex items-center space-x-2 text-xs font-medium text-stone-300 hover:text-white transition-all duration-200 group-hover:translate-x-1"
+                      className="inline-flex items-center space-x-2 text-xs font-medium text-stone-200 hover:text-white transition-all duration-200 group-hover:translate-x-1"
                     >
                       <span>{division.ctaText}</span>
                       <ArrowUpRight className="h-3 w-3 transition-transform group-hover:rotate-45" />
@@ -254,17 +254,17 @@ const DivisionsIntegration: FC = () => {
                       </div>
 
                       <div className="flex-1">
-                        <h3 className="text-sm font-semibold text-stone-300 mb-1">
+                        <h3 className="text-sm font-semibold text-stone-200 mb-1">
                           {division.name}
                         </h3>
 
-                        <p className="text-xs text-stone-300 mb-3 leading-relaxed">
+                        <p className="text-xs text-stone-200 mb-3 leading-relaxed">
                           {division.tagline}
                         </p>
 
                         <Link
                           href={division.ctaPath}
-                          className="inline-flex items-center space-x-2 text-xs font-medium text-stone-300 hover:text-white transition-all duration-200 group-hover:translate-x-1"
+                          className="inline-flex items-center space-x-2 text-xs font-medium text-stone-200 hover:text-white transition-all duration-200 group-hover:translate-x-1"
                         >
                           <span>{division.ctaText}</span>
                           <ArrowUpRight className="h-3 w-3 transition-transform group-hover:rotate-45" />

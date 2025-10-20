@@ -1,74 +1,65 @@
 "use client";
 
 import { FC } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 
 const IrisHero: FC = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
-      <div className="container text-center px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
-        >
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-[#ffd000] text-lg md:text-xl mb-4 tracking-wider font-medium"
-          >
-            IRIS STUDIO
-          </motion.p>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight"
-          >
-            We Turn Stories Into Motion
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
-          >
-            Cinematic storytelling and visual content that captivates audiences. From concept to final cut, we bring your brand narrative to life through compelling visuals that resonate and inspire action.
-          </motion.p>
+    <section className="relative overflow-hidden">
+      {/* Fixed Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="fixed top-0 left-0 w-full h-screen object-cover -z-50"
+      >
+        <source src="/videos/Iris.mp4" type="video/mp4" />
+      </video>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+      {/* Black overlay with blend mode (homepage style) */}
+      <div className="relative z-10 bg-stone-950 mix-blend-darken pt-64 md:pt-20 lg:pt-10 xl:pt-0">
+        {/* Grid background overlay like footer/CTA */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:80px_80px] z-0"></div>
+
+        <div className="relative z-10">
+          <h1
+            className="
+            pt-24 font-extrabold text-white
+            leading-[0.69]  
+          "
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/contact"
-                className="bg-[#ffd000] hover:bg-[#ff9900] text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center space-x-2 transition-colors"
-              >
-                <span>Create With IRIS</span>
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-            </motion.div>
-            
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="#portfolio"
-                className="border border-white text-white hover:bg-white hover:text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center space-x-2 transition-colors"
-              >
-                <span>View Our Reel</span>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            <span
+              className="block text-center"
+              style={{
+                fontSize: "clamp(5rem, 38vw, 40rem)",
+                letterSpacing: "",
+              }}
+            >
+              IRIS
+            </span>
+            <span
+              className="block text-center"
+              style={{
+                fontSize: "clamp(2.2rem, 16.5vw, 20rem)",
+                letterSpacing: "",
+              }}
+            >
+              STUDIOS
+            </span>
+          </h1>
+        </div>
+      </div>
+
+      {/* Extra space below with intro-style text (bottom-right aligned) */}
+      <div className="relative h-[120vh]">
+        <div className="absolute bottom-8 right-8 md:bottom-16 md:right-16 max-w-6xl">
+          <p className="font-bold text-stone-200 text-justify text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.5] sm:leading-[1.5] md:leading-[1.5] lg:leading-[1.5] xl:leading-[1.5]">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cinematic storytelling and visual
+            content that captivates audiences. From concept to final cut, we
+            bring your brand narrative to life through compelling visuals that
+            resonate and inspire action.
+          </p>
+        </div>
       </div>
     </section>
   );

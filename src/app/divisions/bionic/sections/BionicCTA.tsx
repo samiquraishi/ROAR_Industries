@@ -1,47 +1,49 @@
 "use client";
 
 import { FC } from "react";
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const BionicCTA: FC = () => {
   return (
-    <section className="py-24 bg-gradient-to-r from-gray-900 to-black">
-      <div className="container text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
-            Ready to Amplify Your Brand?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Let&apos;s discuss how BIONIC MEDIA can help you build a powerful brand presence 
-            and connect with your ideal customers through strategic marketing.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/contact"
-                className="bg-[#ffd000] hover:bg-[#ff9900] text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center space-x-2 transition-colors"
-              >
-                <span>Amplify With BIONIC</span>
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/divisions"
-                className="border border-white text-white hover:bg-white hover:text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center space-x-2 transition-colors"
-              >
-                <span>Explore Other Divisions</span>
-              </Link>
-            </motion.div>
+    <section className="py-24 lg:py-32 bg-stone-950 relative overflow-hidden">
+      {/* Background grid pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:80px_80px] z-0"></div>
+
+      <div className="max-w-full px-4 md:px-8 relative z-10">
+        {/* Heading */}
+        <div className="mb-8 md:mb-16">
+          <h1
+            className="text-stone-100 font-light mb-4 whitespace-pre-line"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+          >
+            Ready to Grow with {"\n"}BIONIC MEDIA?
+          </h1>
+        </div>
+
+        {/* Subheading with Link */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+          <div>
+            <p
+              className="text-stone-300 text-base md:text-xl lg:text-2xl leading-relaxed whitespace-pre-line"
+              style={{ fontSize: "clamp(1rem, 2.5vw, 1.5rem)" }}
+            >
+              Let&apos;s discuss how BIONIC MEDIA can amplify your brand and
+              drive measurable business growth across channels.
+            </p>
           </div>
-        </motion.div>
+
+          <div className="flex justify-end items-end pr-8 md:pr-16 lg:pr-24">
+            <Link
+              href="/contact"
+              className="inline-flex items-center space-x-2 text-stone-300 hover:text-stone-100 transition-colors font-medium"
+              style={{ fontSize: "clamp(0.875rem, 1.5vw, 1.125rem)" }}
+            >
+              <span>Start a Project</span>
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );
