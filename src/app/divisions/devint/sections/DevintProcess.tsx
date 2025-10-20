@@ -2,7 +2,6 @@
 
 import { FC } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 
 const DevintProcess: FC = () => {
   const processSteps = [

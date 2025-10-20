@@ -28,8 +28,8 @@ const BionicCTA: FC = () => {
               className="text-stone-300 text-base md:text-xl lg:text-2xl leading-relaxed whitespace-pre-line"
               style={{ fontSize: "clamp(1rem, 2.5vw, 1.5rem)" }}
             >
-              Let\'s discuss how BIONIC MEDIA can amplify your brand and drive
-              measurable business growth across channels.
+              Let&apos;s discuss how BIONIC MEDIA can amplify your brand and
+              drive measurable business growth across channels.
             </p>
           </div>
 
