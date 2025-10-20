@@ -29,8 +29,8 @@ const IrisCTA: FC = () => {
               className="text-stone-300 text-base md:text-xl lg:text-2xl leading-relaxed whitespace-pre-line"
               style={{ fontSize: "clamp(1rem, 2.5vw, 1.5rem)" }}
             >
-              Let\'s discuss how IRIS STUDIOS can help you create visual content
-              that captivates your audience and drives results.
+                Let&apos;s discuss how IRIS STUDIOS can help you create visual content
+  that captivates your audience and drives results.
             </p>
           </div>
 
