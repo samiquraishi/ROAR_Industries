@@ -1,106 +1,147 @@
 "use client";
 
 import { FC } from "react";
-import { motion } from "framer-motion";
-import { Code, Smartphone, Cloud, Zap, Database, Shield, CheckCircle } from "lucide-react";
+import { Check } from "lucide-react";
+
+type DevintService = {
+  id: number;
+  title: string;
+  description: string;
+  points: string[];
+};
+
+const ServiceCard: FC<{ item: DevintService }> = ({ item }) => {
+  return (
+    <div className="mt-16 md:mt-28">
+      {/* Top Divider */}
+      <div className="w-full h-px bg-stone-400 mb-3"></div>
+
+      {/* Content */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+        {/* Left Column - Title & Description */}
+        <div>
+          <h2 className="text-md md:text-lg font-semibold text-stone-800 leading-tight whitespace-pre-line mb-3">
+            {item.title}
+          </h2>
+          <p className="text-stone-700 text-sm md:text-base leading-relaxed whitespace-pre-line">
+            {item.description}
+          </p>
+        </div>
+
+        {/* Right Column - Points */}
+        <div className="pr-8 sm:pr-16 md:pr-16 lg:pr-48 xl:pr-72">
+          <ul className="space-y-2">
+            {item.points.map((point, index) => (
+              <li
+                key={index}
+                className="flex items-start space-x-3 text-stone-800 text-sm md:text-base"
+              >
+                <Check className="h-4 w-4 text-stone-600 mt-0.5 flex-shrink-0" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const devintServicesData: DevintService[] = [
+  {
+    id: 1,
+    title: "Web Development",
+    description:
+      "We build fast, secure, and SEO-optimized web applications\n tailored to your business goals.",
+    points: [
+      "Custom Web Applications",
+      "CMS & API Integration",
+      "SEO & Performance Optimization",
+      "Scalable Architecture",
+    ],
+  },
+  {
+    id: 2,
+    title: "Data Science, Machine Learning & AI",
+    description:
+      "Transform your data into actionable insights with intelligent systems\n built on advanced analytics and automation.",
+    points: [
+      "Predictive Analytics & Modeling",
+      "Data Visualization & BI Dashboards",
+      "AI-Powered Automation",
+      "Natural Language Processing (NLP)",
+    ],
+  },
+  {
+    id: 3,
+    title: "UI/UX Design",
+    description:
+      "We craft seamless, human-centered digital experiences\n that combine creativity and usability.",
+    points: [
+      "User Research & Persona Mapping",
+      "Wireframes & Prototypes",
+      "Interface Design Systems",
+      "Experience Optimization & Testing",
+    ],
+  },
+  {
+    id: 4,
+    title: "Mobile App Development",
+    description:
+      "Cross-platform and native mobile applications built for performance\n engagement, and scalability.",
+    points: [
+      "iOS & Android App Development",
+      "Flutter & React Native",
+      "API & Database Integration",
+      "App Maintenance & Versioning",
+    ],
+  },
+  {
+    id: 5,
+    title: "Cloud & DevOps Solutions",
+    description:
+      "Cloud-native infrastructure and automation solutions\n that ensure speed, stability, and scalability.",
+    points: [
+      "AWS / Azure / GCP Architecture",
+      "CI/CD Pipeline Setup",
+      "Server Monitoring & Optimization",
+      "Backup & Deployment Automation",
+    ],
+  },
+  {
+    id: 6,
+    title: "Cybersecurity & Data Protection",
+    description:
+      "Advanced protection solutions to secure your applications\n infrastructure, and sensitive data.",
+    points: [
+      "Security Audits & Penetration Testing",
+      "Data Encryption & Access Control",
+      "Threat Detection & Response",
+      "Compliance & Risk Management",
+    ],
+  },
+];
 
 const DevintServices: FC = () => {
-  const services = [
-    {
-      title: 'Web Development',
-      description: 'Custom websites and web applications built with modern technologies and best practices for optimal performance and user experience.',
-      features: ['Responsive Design', 'SEO Optimized', 'Fast Loading', 'Cross-browser Compatible'],
-      icon: Code
-    },
-    {
-      title: 'Mobile App Development',
-      description: 'Native and cross-platform mobile applications that deliver exceptional user experiences across iOS and Android devices.',
-      features: ['Native Performance', 'Cross-platform', 'App Store Optimization', 'Push Notifications'],
-      icon: Smartphone
-    },
-    {
-      title: 'Cloud Solutions',
-      description: 'Scalable cloud infrastructure and DevOps solutions that ensure your applications perform reliably at any scale.',
-      features: ['Auto-scaling', 'Load Balancing', 'CDN Integration', '24/7 Monitoring'],
-      icon: Cloud
-    },
-    {
-      title: 'AI & Analytics',
-      description: 'Intelligent solutions powered by artificial intelligence and machine learning to automate processes and gain insights.',
-      features: ['Machine Learning', 'Data Analytics', 'Process Automation', 'Predictive Modeling'],
-      icon: Zap
-    },
-    {
-      title: 'Database Solutions',
-      description: 'Robust database design and management solutions that ensure data integrity, security, and optimal performance.',
-      features: ['Data Modeling', 'Performance Tuning', 'Backup & Recovery', 'Security Implementation'],
-      icon: Database
-    },
-    {
-      title: 'Cybersecurity',
-      description: 'Comprehensive security solutions to protect your digital assets and ensure compliance with industry standards.',
-      features: ['Security Audits', 'Penetration Testing', 'Compliance', 'Incident Response'],
-      icon: Shield
-    }
-  ];
-
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">
-            Our Technology Services
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We leverage cutting-edge technologies and industry best practices to deliver solutions 
-            that drive real business value and competitive advantage.
+    <section className="bg-stone-200 pt-48 lg:pt-56 pb-24 md:pb-40">
+      <div className="max-w-full px-4 md:px-8">
+        {/* Main Heading */}
+        <div className="mb-8 md:mb-16">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-stone-800 mb-4">
+            Our Technology <br/> Services
+          </h1>
+          <p className="text-stone-600 text-base md:text-xl lg:text-2xl leading-relaxed">
+            We design and develop intelligent, scalable digital systems —
+            combining design, data, and engineering to help businesses grow
+            faster and smarter.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              className="bg-white p-8 rounded-xl shadow-lg group hover:shadow-xl transition-shadow"
-            >
-              {/* Icon */}
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#ffd000] to-[#ff9900] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <service.icon className="h-6 w-6 text-black" />
-                </div>
-              </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-semibold text-gray-900 group-hover:text-[#ffd000] transition-colors mb-3">
-                {service.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                {service.description}
-              </p>
-
-              {/* Features */}
-              <div className="space-y-2">
-                {service.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4 text-[#ffd000] flex-shrink-0" />
-                    <span className="text-sm text-gray-600">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+        {/* Services Content */}
+        <div>
+          {devintServicesData.map((item) => (
+            <ServiceCard key={item.id} item={item} />
           ))}
         </div>
       </div>
