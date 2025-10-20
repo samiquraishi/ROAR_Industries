@@ -37,12 +37,12 @@ const divisions = [
     ctaText: "Create With IRIS",
     ctaPath: "/divisions/iris",
     services: [
-      "Commercial & Brand Films",
-      "Creative Direction & Concept Development",
-      "3D Animation & CGI",
-      "Corporate Video Production",
-      "Post-Production & Editing",
-      "Photography & Visual Assets",
+      "Filmmaking & Direction",
+      "Cinematography (Aerial & Studio)",
+      "Scriptwriting & Storyboarding",
+      "VFX & Post-Production",
+      "Motion Graphics & 3D/CGI Design",
+      "Production Budgeting & Scheduling",
     ],
   },
   {
@@ -95,13 +95,13 @@ const DivisionCard: FC<{ division: (typeof divisions)[0]; index: number }> = ({
           <div className="lg:col-span-2 flex flex-col justify-center">
             {/* Info */}
             <div className="text-center lg:text-left">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-stone-300 mb-2">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-stone-200 mb-2">
                 {division.name}
               </h2>
-              <p className="text-stone-300 font-semibold text-lg md:text-xl mb-6">
+              <p className="text-stone-200 font-semibold text-lg md:text-xl mb-6">
                 {division.tagline}
               </p>
-              <p className="text-stone-300 text-base md:text-lg leading-relaxed">
+              <p className="text-stone-200 text-base md:text-lg leading-relaxed">
                 {division.description}
               </p>
             </div>
@@ -111,16 +111,16 @@ const DivisionCard: FC<{ division: (typeof divisions)[0]; index: number }> = ({
 
             {/* Services */}
             <div>
-              <h3 className="text-stone-300 font-semibold text-lg md:text-xl mb-6 text-center lg:text-left">
+              <h3 className="text-stone-200 font-semibold text-lg md:text-xl mb-6 text-center lg:text-left">
                 Key Services:
               </h3>
               <ul className="space-y-3 sm:columns-2 sm:gap-x-8">
                 {division.services.map((service, serviceIndex) => (
                   <li
                     key={serviceIndex}
-                    className="flex items-start space-x-3 text-stone-300 text-sm md:text-base"
+                    className="flex items-start space-x-3 text-stone-200 text-sm md:text-base"
                   >
-                    <Check className="h-4 w-4 text-stone-300 mt-0.5 flex-shrink-0" />
+                    <Check className="h-4 w-4 text-stone-200 mt-0.5 flex-shrink-0" />
                     <span>{service}</span>
                   </li>
                 ))}
@@ -132,7 +132,7 @@ const DivisionCard: FC<{ division: (typeof divisions)[0]; index: number }> = ({
               <motion.div whileHover={{ x: 5 }}>
                 <Link
                   href={division.ctaPath}
-                  className="inline-flex items-center space-x-2 text-stone-300 hover:text-white transition-colors font-semibold"
+                  className="inline-flex items-center space-x-2 text-stone-200 hover:text-white transition-colors font-semibold"
                 >
                   <span>{division.ctaText}</span>
                   <ArrowUpRight className="h-5 w-5" />
