@@ -187,7 +187,8 @@ const Domain: FC = () => {
         {/* Heading */}
         <div className="mb-8 md:mb-16">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-stone-800 mb-8">
-            Looking for individual<br/> services?
+            Looking for individual
+            <br /> services?
           </h1>
           <Link
             href="/divisions"
@@ -210,7 +211,7 @@ const Domain: FC = () => {
                   src={domain.image}
                   alt={domain.name}
                   fill
-                  className="object-cover"
+                  className="object-cover rounded-lg"
                   style={{
                     objectPosition: `50% ${domain.imagePositionY * 100}%`,
                   }}
@@ -218,27 +219,30 @@ const Domain: FC = () => {
               </div>
 
               {/* Right Column - Content */}
-              <div className="bg-black text-white p-4 flex flex-col justify-center space-y-3 h-full">
-                <h3
-                  className="font-bold text-white"
-                  style={{ fontSize: "clamp(1.25rem, 3vw, 2rem)" }}
-                >
-                  {domain.name}
-                </h3>
-                <p
-                  className="text-stone-300 font-semibold"
-                  style={{ fontSize: "clamp(0.75rem, 1.5vw, 1rem)" }}
-                >
-                  {domain.tagline}
-                </p>
-                <Link
-                  href={domain.ctaPath}
-                  className="inline-flex items-center space-x-2 text-stone-300 hover:text-stone-100 transition-colors font-semibold"
-                  style={{ fontSize: "clamp(0.625rem, 1.2vw, 0.875rem)" }}
-                >
-                  <span>{domain.ctaText}</span>
-                  <ArrowRight className="h-3 w-3" />
-                </Link>
+              <div className="relative text-white p-4 flex flex-col justify-center space-y-3 h-full bg-black rounded-lg overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:80px_80px] z-0"></div>
+                <div className="relative z-10">
+                  <h3
+                    className="font-bold text-white"
+                    style={{ fontSize: "clamp(1.25rem, 3vw, 2rem)" }}
+                  >
+                    {domain.name}
+                  </h3>
+                  <p
+                    className="text-stone-300 font-semibold"
+                    style={{ fontSize: "clamp(0.75rem, 1.5vw, 1rem)" }}
+                  >
+                    {domain.tagline}
+                  </p>
+                  <Link
+                    href={domain.ctaPath}
+                    className="inline-flex items-center space-x-2 text-stone-300 hover:text-stone-100 transition-colors font-semibold"
+                    style={{ fontSize: "clamp(0.625rem, 1.2vw, 0.875rem)" }}
+                  >
+                    <span>{domain.ctaText}</span>
+                    <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
@@ -255,7 +259,7 @@ const Domain: FC = () => {
             {domains.map((domain, index) => (
               <div
                 key={domain.name}
-                className="relative size-full cursor-pointer overflow-hidden"
+                className="relative size-full cursor-pointer overflow-hidden rounded-lg"
                 onMouseEnter={() => setHoveredIndex(index)}
               >
                 {/* Video Element */}
@@ -266,7 +270,7 @@ const Domain: FC = () => {
                   src={domain.video}
                   muted
                   loop
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out rounded-lg"
                   style={{
                     opacity: hoveredIndex === index ? 1 : 0,
                     transform:
@@ -279,7 +283,7 @@ const Domain: FC = () => {
                   src={domain.image}
                   alt={domain.name}
                   fill
-                  className="object-cover size-full transition-all duration-700 ease-in-out"
+                  className="object-cover size-full transition-all duration-700 ease-in-out rounded-lg"
                   style={{
                     objectPosition: `50% ${domain.imagePositionY * 100}%`,
                     opacity: hoveredIndex === index ? 0 : 1,
@@ -297,7 +301,7 @@ const Domain: FC = () => {
             {hoveredIndex === 0 && (
               <motion.div
                 key="devint-panel"
-                className="absolute top-0 h-full bg-black text-stone-100 p-8 md:p-12 flex items-center"
+                className="absolute top-0 h-full bg-black text-stone-100 p-8 md:p-12 flex items-center overflow-hidden"
                 style={{
                   left: "33.33%",
                   width: "66.66%",
@@ -307,7 +311,10 @@ const Domain: FC = () => {
                 animate="animate"
                 exit="exit"
               >
-                <DomainContent {...domains[0]} />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:80px_80px] z-0"></div>
+                <div className="relative z-10 w-full">
+                  <DomainContent {...domains[0]} />
+                </div>
               </motion.div>
             )}
 
@@ -317,14 +324,15 @@ const Domain: FC = () => {
                 {/* Left Panel (covers Col 0) */}
                 <motion.div
                   key="iris-panel-left"
-                  className="absolute top-0 h-full w-[33.33%] bg-black text-stone-100 p-8 md:p-12 flex flex-col justify-center items-end"
+                  className="absolute top-0 h-full w-[33.33%] bg-black text-stone-100 p-8 md:p-12 flex flex-col justify-center items-end overflow-hidden"
                   style={{ left: "0%" }}
                   variants={centerPanelLeft}
                   initial="initial"
                   animate="animate"
                   exit="exit"
                 >
-                  <div className="w-full max-w-xs md:max-w-sm pl-4">
+                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:80px_80px] z-0"></div>
+                  <div className="relative z-10 w-full max-w-xs md:max-w-sm pl-4">
                     <h3
                       className="font-bold text-white mb-2"
                       style={{ fontSize: "clamp(1.25rem, 3vw, 2.5rem)" }}
@@ -353,14 +361,15 @@ const Domain: FC = () => {
                 {/* Right Panel (covers Col 2) */}
                 <motion.div
                   key="iris-panel-right"
-                  className="absolute top-0 h-full w-[33.33%] bg-black text-stone-100 p-8 md:p-12 flex flex-col justify-center items-start"
+                  className="absolute top-0 h-full w-[33.33%] bg-black text-stone-100 p-8 md:p-12 flex flex-col justify-center items-start overflow-hidden"
                   style={{ right: "0%" }}
                   variants={centerPanelRight}
                   initial="initial"
                   animate="animate"
                   exit="exit"
                 >
-                  <div className="w-full max-w-xs md:max-w-sm pr-4">
+                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:80px_80px] z-0"></div>
+                  <div className="relative z-10 w-full max-w-xs md:max-w-sm pr-4">
                     <p
                       className="text-stone-300 leading-relaxed"
                       style={{ fontSize: "clamp(0.75rem, 2vw, 1.25rem)" }}
@@ -376,14 +385,17 @@ const Domain: FC = () => {
             {hoveredIndex === 2 && (
               <motion.div
                 key="bionic-panel"
-                className="absolute top-0 h-full bg-black text-stone-100 p-8 md:p-12 flex items-center"
+                className="absolute top-0 h-full bg-black text-stone-100 p-8 md:p-12 flex items-center overflow-hidden"
                 style={{ left: "0%", width: "66.66%" }} // Covers col 0, 1 with no gap
                 variants={sidePanelFromRight}
                 initial="initial"
                 animate="animate"
                 exit="exit"
               >
-                <DomainContent {...domains[2]} />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:80px_80px] z-0"></div>
+                <div className="relative z-10 w-full">
+                  <DomainContent {...domains[2]} />
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

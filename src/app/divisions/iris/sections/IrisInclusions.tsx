@@ -2,34 +2,61 @@
 
 import { FC } from "react";
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 
 const IrisInclusions: FC = () => {
-  const detailedList = [
-    'Scriptwriting – Write impactful scripts for ads, videos, or films.',
-    'Art Direction – Guide creative style, mood, and aesthetics.',
-    'Photography & Videography – Capture professional visuals for campaigns.',
-    'Advertising Shoots – Full‑scale production for commercials.',
-    'Post‑Production & Editing – Refine raw footage into polished content.',
-    'Animation & Motion Graphics – Create engaging animated content.',
-    '3D & CGI Production – High‑end visuals for ads, products, or storytelling.'
+  const inclusions = [
+    "Scriptwriting",
+    "Art Direction",
+    "Photography & Videography",
+    "Advertising Shoots",
+    "Post‑Production & Editing",
+    "Animation & Motion Graphics",
+    "3D & CGI Production",
+    "Location Scouting & Permissions",
+    "Set Design & Logistics",
   ];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="container">
+    <section className="bg-stone-200 pt-40 pb-24 md:pb-40">
+      <div className="max-w-full px-4 md:px-8">
+        {/* Main Heading */}
+        <div className="mb-8 md:mb-16 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-stone-800 mb-4">
+            What IRIS STUDIOS
+            <br /> Includes?
+          </h1>
+          <p className="text-stone-600 text-base md:text-xl lg:text-2xl leading-relaxed max-w-4xl mx-auto">
+            Comprehensive creative services covering every aspect of production
+            and post-production.
+          </p>
+        </div>
+
+        {/* Frosted Glass Card */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="bg-gray-50 border border-gray-200 rounded-xl p-8"
+          className="bg-gradient-to-br from-black/40 via-black/30 to-black/20 backdrop-blur-lg rounded-[60px] p-8 md:p-12 border border-white/10 shadow-2xl max-w-6xl mx-auto"
         >
-          <h3 className="text-2xl font-semibold text-gray-900 mb-4">What IRIS STUDIO includes</h3>
-          <ul className="list-disc pl-6 space-y-2 text-gray-600">
-            {detailedList.map((item, index) => (
-              <li key={index}>{item}</li>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {inclusions.map((inclusion, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="flex items-start space-x-3"
+              >
+                <Check className="h-5 w-5 text-stone-200 mt-0.5 flex-shrink-0" />
+                <span className="text-stone-200 text-sm md:text-base">
+                  {inclusion}
+                </span>
+              </motion.div>
             ))}
-          </ul>
+          </div>
         </motion.div>
       </div>
     </section>
