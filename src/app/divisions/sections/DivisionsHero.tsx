@@ -56,7 +56,7 @@ const DivisionsHero: FC = () => {
                 playsInline
                 className="h-full w-full object-contain"
               >
-                <source src="/videos/divisions.mp4" type="video/mp4" />
+                <source src="/videos/Divisions.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
