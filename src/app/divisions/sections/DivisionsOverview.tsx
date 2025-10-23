@@ -29,7 +29,7 @@ const divisions = [
     ],
   },
   {
-    name: "IRIS STUDIO",
+    name: "IRIS STUDIOS",
     tagline: "We Turn Stories Into Motion",
     description:
       "Cinematic storytelling and visual content that captivates audiences. From concept to final cut, we bring your brand narrative to life through compelling visuals that resonate and inspire action.",
@@ -78,7 +78,7 @@ const DivisionCard: FC<{ division: (typeof divisions)[0]; index: number }> = ({
       className="mt-16 md:mt-28"
     >
       {/* Frosted Glass Card with Gradient Effect */}
-      <div className="bg-gradient-to-br from-black/40 via-black/30 to-black/20 backdrop-blur-lg rounded-[60px] p-8 md:p-12 border border-white/10 shadow-2xl">
+      <div className="bg-gradient-to-br from-black/45 via-black/35 to-black/40 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
           {/* Left Column (1/3) - Logo Only */}
           <div className="lg:col-span-1 flex items-center justify-center">
@@ -98,10 +98,10 @@ const DivisionCard: FC<{ division: (typeof divisions)[0]; index: number }> = ({
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-stone-200 mb-2">
                 {division.name}
               </h2>
-              <p className="text-stone-200 font-semibold text-lg md:text-xl mb-6">
+              <p className="text-stone-100 font-semibold text-lg md:text-xl mb-6">
                 {division.tagline}
               </p>
-              <p className="text-stone-200 text-base md:text-lg leading-relaxed">
+              <p className="hidden lg:block text-stone-100 text-base md:text-lg leading-relaxed">
                 {division.description}
               </p>
             </div>
@@ -111,16 +111,16 @@ const DivisionCard: FC<{ division: (typeof divisions)[0]; index: number }> = ({
 
             {/* Services */}
             <div>
-              <h3 className="text-stone-200 font-semibold text-lg md:text-xl mb-6 text-center lg:text-left">
+              <h3 className="text-stone-100 font-semibold text-lg md:text-xl mb-6 text-center lg:text-left">
                 Key Services:
               </h3>
               <ul className="space-y-3 sm:columns-2 sm:gap-x-8">
                 {division.services.map((service, serviceIndex) => (
                   <li
                     key={serviceIndex}
-                    className="flex items-start space-x-3 text-stone-200 text-sm md:text-base"
+                    className="flex items-start space-x-3 text-stone-100 text-sm md:text-base"
                   >
-                    <Check className="h-4 w-4 text-stone-200 mt-0.5 flex-shrink-0" />
+                    <Check className="h-4 w-4 text-stone-100 mt-0.5 flex-shrink-0" />
                     <span>{service}</span>
                   </li>
                 ))}

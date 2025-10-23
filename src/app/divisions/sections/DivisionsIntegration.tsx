@@ -31,7 +31,7 @@ const DivisionsIntegration: FC = () => {
     },
 
     {
-      name: "IRIS STUDIO",
+      name: "IRIS STUDIOS",
 
       tagline: "We Turn Stories Into Motion",
 
@@ -82,7 +82,6 @@ const DivisionsIntegration: FC = () => {
   return (
     <section className="py-24 lg:py-32 bg-stone-200 relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         <div className="mb-16 md:mb-24 text-center">
@@ -154,7 +153,7 @@ const DivisionsIntegration: FC = () => {
 
                   {/* Enhanced Division Card */}
                   <motion.div
-                    className="bg-gradient-to-br from-black/40 via-black/30 to-black/20 backdrop-blur-lg rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl"
+                    className="bg-gradient-to-br from-black/45 via-black/35 to-black/40 backdrop-blur-xl rounded-xl p-6 md:p-8 border border-white/10 shadow-2xl"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
@@ -208,7 +207,7 @@ const DivisionsIntegration: FC = () => {
 
             {/* Enhanced Divisions Grid (Vertical) */}
             <motion.div
-              className="space-y-16 pl-20"
+              className="space-y-16 pl-20 pr-2 sm:pr-10"
               variants={gridVariants}
               initial="hidden"
               whileInView="visible"
@@ -222,7 +221,7 @@ const DivisionsIntegration: FC = () => {
                 >
                   {/* Enhanced Horizontal Connecting Line */}
                   <motion.div
-                    className="absolute -left-8 top-6 w-12 h-0.5 bg-gradient-to-r from-stone-400 to-stone-300"
+                    className="absolute -left-12 top-16 w-12 h-0.5 bg-gradient-to-r from-stone-400 to-stone-300"
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
@@ -236,7 +235,7 @@ const DivisionsIntegration: FC = () => {
 
                   {/* Enhanced Division Card */}
                   <motion.div
-                    className="bg-gradient-to-br from-black/40 via-black/30 to-black/20 backdrop-blur-lg rounded-[60px] p-5 md:p-6 border border-white/10 shadow-2xl"
+                    className="bg-gradient-to-br from-black/45 via-black/35 to-black/40 backdrop-blur-xl rounded-xl p-6 border border-white/10 shadow-2xl"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}

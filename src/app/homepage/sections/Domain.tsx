@@ -23,7 +23,7 @@ const domains = [
     ctaPath: "/divisions/devint",
   },
   {
-    name: "IRIS STUDIO",
+    name: "IRIS STUDIOS",
     tagline: "We Turn Stories Into Motion",
     quote:
       "Cinematic storytelling and visual content that captivates audiences. From concept to final cut, we bring your brand narrative to life through compelling visuals that resonate and inspire action.",

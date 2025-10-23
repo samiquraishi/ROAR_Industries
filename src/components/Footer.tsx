@@ -77,7 +77,7 @@ const Footer: FC = () => {
           </div>
         </div>
 
-        <p className="py-8 text-stone-400 text-sm text-center border-t border-stone-700">
+        <p className="py-8 text-stone-400 text-sm text-center border-t pb-48 -mb-36 border-stone-700">
           © Roar Industries &nbsp; &bull; &nbsp; All rights reserved.
         </p>
       </div>
