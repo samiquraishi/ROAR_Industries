@@ -96,7 +96,7 @@ const BionicProcess: FC = () => {
                           {step.title.split(" ").slice(-1)[0]}
                         </span>
                       </h3>
-                      <p className="text-xs text-stone-500 mb-2">
+                      <p className="text-xs text-stone-500 px-10 mb-2">
                         {step.description}
                       </p>
                     </div>

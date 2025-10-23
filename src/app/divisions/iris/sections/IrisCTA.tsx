@@ -17,7 +17,7 @@ const IrisCTA: FC = () => {
             className="text-stone-100 font-light mb-4 whitespace-pre-line"
             style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
           >
-            Ready to Create with {"\n"}IRIS STUDIOS?
+            Ready to Create Something {"\n"}Extraordinary?
           </h1>
         </div>
 
@@ -41,7 +41,7 @@ const IrisCTA: FC = () => {
               className="inline-flex items-center space-x-2 text-stone-300 hover:text-stone-100 transition-colors font-medium"
               style={{ fontSize: "clamp(0.875rem, 1.5vw, 1.125rem)" }}
             >
-              <span>Start a Project</span>
+              <span>Create with IRIS</span>
               <ArrowRight className="h-5 w-5" />
             </Link>
           </div>

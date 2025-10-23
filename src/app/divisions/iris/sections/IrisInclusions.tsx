@@ -38,7 +38,7 @@ const IrisInclusions: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-black/40 via-black/30 to-black/20 backdrop-blur-lg rounded-[60px] p-8 md:p-12 border border-white/10 shadow-2xl max-w-6xl mx-auto"
+          className="bg-gradient-to-br from-black/45 via-black/35 to-black/40 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl max-w-6xl mx-auto"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {inclusions.map((inclusion, index) => (
@@ -50,8 +50,8 @@ const IrisInclusions: FC = () => {
                 viewport={{ once: true }}
                 className="flex items-start space-x-3"
               >
-                <Check className="h-5 w-5 text-stone-200 mt-0.5 flex-shrink-0" />
-                <span className="text-stone-200 text-sm md:text-base">
+                <Check className="h-5 w-5 text-stone-100 mt-0.5 flex-shrink-0" />
+                <span className="text-stone-100 text-sm md:text-base">
                   {inclusion}
                 </span>
               </motion.div>

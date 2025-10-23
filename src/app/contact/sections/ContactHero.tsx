@@ -4,7 +4,7 @@ import { FC } from "react";
 
 const ContactHero: FC = () => {
   return (
-    <section className="relative w-full bg-stone-950 min-h-screen">
+    <section className="relative w-full bg-stone-950 min-h-screen ">
       {/* Fixed Background Video */}
       <video
         autoPlay
@@ -31,8 +31,6 @@ const ContactHero: FC = () => {
           Your Growth Journey?
         </h1>
       </div>
-
-      
     </section>
   );
 };

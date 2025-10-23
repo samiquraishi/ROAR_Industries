@@ -9,12 +9,12 @@ const DivisionsHero: FC = () => {
       <div className="fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:80px_80px] z-0"></div>
 
       {/* SECTION 1: The initial view. */}
-      <div className="relative z-10 h-screen flex flex-col items-center justify-end pb-8 md:pb-16 lg:pb-24">
+      <div className="relative z-10 h-screen flex flex-col items-center justify-end pb-8 md:pb-16 lg:pb-24 -mt-96 sm:-mt-20 lg:-mt-0">
         <h1 className="text-center font-extrabold leading-[0.9]">
           <span
             className="block text-stone-200 mb-2 md:mb-4"
             style={{
-              fontSize: "clamp(2rem, 10vw, 12rem)",
+              fontSize: "clamp(2rem, 12vw, 18rem)",
             }}
           >
             EXPLORE
@@ -22,7 +22,7 @@ const DivisionsHero: FC = () => {
           <span
             className="block text-stone-200"
             style={{
-              fontSize: "clamp(2rem, 10vw, 12rem)",
+              fontSize: "clamp(2rem, 12vw, 18rem)",
             }}
           >
             OUR
