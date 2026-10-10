@@ -11,9 +11,10 @@ const Hero: FC = () => {
         muted
         loop
         playsInline
+        preload="auto"
         className="fixed top-0 left-0 w-full h-screen object-cover -z-50"
       >
-        <source src="/videos/homepageBG.mp4" type="video/mp4" />
+        <source src="/assets/videos/homepageBG.mp4" type="video/mp4" />
       </video>
 
       {/* Black overlay with blend mode */}

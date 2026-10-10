@@ -60,7 +60,7 @@ const FrameworkHero: FC = () => {
                 playsInline
                 className="h-full w-full object-contain"
               >
-                <source src="/videos/framework.mp4" type="video/mp4" />
+                <source src="/assets/videos/framework.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

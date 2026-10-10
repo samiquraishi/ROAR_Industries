@@ -3,41 +3,21 @@
 import { FC, useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Equal, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import MobileMenu from "@/components/MobileMenu"; 
 
 const navItems = [
-  {
-    label: "HOME",
-    href: "/",
-  },
-  {
-    label: "FRAMEWORK",
-    href: "/framework",
-  },
-  {
-    label: "DIVISIONS",
-    href: "/divisions",
-  },
-  {
-    label: "ABOUT",
-    href: "/about",
-  },
+  { label: "HOME", href: "/" },
+  { label: "FRAMEWORK", href: "/framework" },
+  { label: "DIVISIONS", href: "/divisions" },
+  { label: "ABOUT", href: "/about" },
+  { label: "CONTACT", href: "/contact" },
 ];
 
-// Content for the new dropdown
 const divisionItems = [
-  {
-    label: "Devint",
-    href: "/divisions/devint",
-  },
-  {
-    label: "Iris Studios",
-    href: "/divisions/iris",
-  },
-  {
-    label: "Bionic Media",
-    href: "/divisions/bionic",
-  },
+  { label: "Devint", href: "/divisions/devint" },
+  { label: "Iris Studios", href: "/divisions/iris" },
+  { label: "Bionic Media", href: "/divisions/bionic" },
 ];
 
 const Header: FC = () => {
@@ -56,19 +36,18 @@ const Header: FC = () => {
 
   return (
     <header>
-      {/* Header with backdrop blur and mix-blend-difference */}
-      <div className="fixed top-0 left-0 w-full z-40 mix-blend-difference backdrop-blur-md pointer-events-none">
+      {/* Header bar */}
+      <div className="fixed top-0 left-0 w-full z-50 mix-blend-difference backdrop-blur-md pointer-events-none">
         <div className="container !max-w-full">
           <motion.div
             className="flex justify-between items-start py-6 px-6 overflow-visible"
-            // Close when mouse leaves the entire header area
             onMouseLeave={() => setIsDivisionsOpen(false)}
             initial={false}
             animate={{ height: isDivisionsOpen ? 155 : 75 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             style={{ height: 80 }}
           >
-            {/* Left side - Logo */}
+            {/* Logo */}
             <div className="pointer-events-auto">
               <Link href="/">
                 <span className="text-sm font-medium text-white">
@@ -77,30 +56,24 @@ const Header: FC = () => {
               </Link>
             </div>
 
-            {/* Center - Navigation (hidden on small screens) */}
-            {/* We add items-start here so that when the "Divisions" column grows,
-              the other links ("Home", "Framework") stay aligned at the top.
-            */}
-            <nav className="hidden md:flex items-start gap-8 pointer-events-auto ">
+            {/* Desktop nav */}
+            <nav className="hidden md:flex items-start gap-8 pointer-events-auto">
               {navItems.map(({ label, href }) =>
-                // Check if the item is "DIVISIONS" to render it specially
                 label === "DIVISIONS" ? (
                   <div
                     key={label}
                     className="flex flex-col"
-                    // Open when mouse enters; close when leaving this block
                     onMouseEnter={() => setIsDivisionsOpen(true)}
                     onMouseLeave={() => setIsDivisionsOpen(false)}
                   >
-                    {/* The "Divisions" link itself */}
                     <Link
                       href={href}
-                      className="text-sm text-gray-300 hover:text-white transition-colors"
+                      className="text-sm text-gray-300 hover:text-white transition-colors relative group"
                     >
                       {label}
+                      <span className="absolute -bottom-1 left-0 h-px w-0 bg-white group-hover:w-full transition-all duration-300" />
                     </Link>
 
-                    {/* The Dropdown, now a direct child */}
                     <AnimatePresence>
                       {isDivisionsOpen && (
                         <motion.ul
@@ -139,9 +112,10 @@ const Header: FC = () => {
                             >
                               <Link
                                 href={item.href}
-                                className="text-sm text-gray-300 hover:text-white transition-colors"
+                                className="text-sm text-gray-300 hover:text-white transition-colors relative group"
                               >
                                 {item.label}
+                                <span className="absolute -bottom-1 left-0 h-px w-0 bg-white group-hover:w-full transition-all duration-300" />
                               </Link>
                             </motion.li>
                           ))}
@@ -150,77 +124,39 @@ const Header: FC = () => {
                     </AnimatePresence>
                   </div>
                 ) : (
-                  // All other links render normally
                   <Link
                     key={label}
                     href={href}
-                    className="text-sm text-gray-300 hover:text-white transition-colors"
+                    className="text-sm text-gray-300 hover:text-white transition-colors relative group"
                   >
                     {label}
+                    <span className="absolute -bottom-1 left-0 h-px w-0 bg-white group-hover:w-full transition-all duration-300" />
                   </Link>
                 )
               )}
             </nav>
 
-            {/* Right side - Contact and Menu */}
+            {/* Right side — Contact + Mobile toggle */}
             <div className="flex gap-4 items-center pointer-events-auto uppercase">
               <Link
                 href="/contact"
-                className="text-sm text-gray-300 hover:text-white transition-colors hidden md:inline-flex items-center gap-1"
+                className="text-sm text-gray-300 hover:text-white transition-colors hidden md:inline-flex items-center gap-1 relative group"
               >
-                Contact
+                <span>Contact</span>
                 <ArrowUpRight className="w-3 h-3" />
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-white group-hover:w-[4.5rem] transition-all duration-300" />
               </Link>
 
-              <motion.div
-                whileHover={{ rotate: 270 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="md:hidden size-8 inline-flex items-center justify-center cursor-pointer mix-blend-difference"
-              >
-                {isMenuOpen ? (
-                  <X size={26} className="text-white" />
-                ) : (
-                  <Equal size={26} className="text-white" />
-                )}
-              </motion.div>
+              <MobileMenu
+                navItems={navItems}
+                isOpen={isMenuOpen}
+                onToggle={() => setIsMenuOpen((prev) => !prev)}
+                onClose={() => setIsMenuOpen(false)}
+              />
             </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Full-page Navigation Menu (No changes here) */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed top-0 left-0 w-full h-screen bg-black z-30 pt-8 overflow-y-auto"
-          >
-            <nav className="mt-20 flex flex-col">
-              {navItems.map(({ label, href }) => (
-                <Link
-                  href={href}
-                  key={label}
-                  className="text-stone-300 group/nav-item relative isolate"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <div className="container flex items-center justify-between !max-w-full border-b border-stone-900 py-4 px-6 transition-colors">
-                    <span className="text-lg group-hover/nav-item:pl-4 transition-all duration-300 ">
-                      {label}
-                    </span>
-                    <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8" />
-                  </div>
-                  <div className="absolute left-0 w-full h-0 -z-10 bg-[#1a1a1a] group-hover/nav-item:h-full transition-all duration-300 bottom-0"></div>
-                </Link>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
   );
 };

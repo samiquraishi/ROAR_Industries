@@ -3,20 +3,25 @@
 import { FC, useState } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
+
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
 
 const ContactForm: FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     company: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     serviceType: "",
     message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
-    null
+    null,
   );
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
@@ -32,13 +37,15 @@ const ContactForm: FC = () => {
     const newErrors: { [key: string]: string } = {};
 
     if (!formData.name.trim()) newErrors.name = "Full name is required.";
-    if (!formData.email.trim())
-      newErrors.email = "Email address is required.";
+    if (!formData.email.trim()) newErrors.email = "Email address is required.";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
       newErrors.email = "Enter a valid email address.";
 
-    if (formData.phone && !/^\+?[0-9\s-]{7,15}$/.test(formData.phone))
-      newErrors.phone = "Enter a valid phone number.";
+    if (
+      formData.phoneNumber &&
+      !/^\+?[0-9\s-]{7,15}$/.test(formData.phoneNumber)
+    )
+      newErrors.phoneNumber = "Enter a valid phone number.";
 
     if (!formData.serviceType)
       newErrors.serviceType = "Please select a service.";
@@ -52,7 +59,7 @@ const ContactForm: FC = () => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     setFormData({
       ...formData,
@@ -69,32 +76,26 @@ const ContactForm: FC = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch(
-        "https://roar-api-staging-d6cbeegkg4dcd4h0.centralindia-01.azurewebsites.net/api/Contact/submit",
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            fullName: formData.name,
-            company: formData.company,
-            email: formData.email,
-            phone: formData.phone,
-            serviceInterest: formData.serviceType,
-            message: formData.message,
-          }),
-        }
+          full_name: formData.name,
+          company: formData.company,
+          to_email: formData.email,
+          phone: formData.phoneNumber,
+          service_type: formData.serviceType,
+          message: formData.message,
+        },
+        EMAILJS_PUBLIC_KEY,
       );
-
-      if (!response.ok) throw new Error("Failed to send message");
 
       setSubmitStatus("success");
       setFormData({
         name: "",
         company: "",
         email: "",
-        phone: "",
+        phoneNumber: "",
         serviceType: "",
         message: "",
       });
@@ -216,14 +217,16 @@ const ContactForm: FC = () => {
                 </label>
                 <input
                   type="tel"
-                  name="phone"
-                  value={formData.phone}
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
                   onChange={handleChange}
                   className="w-full px-4 py-4 bg-white border border-stone-300 rounded-lg text-stone-900 placeholder-stone-500 focus:border-stone-600 focus:ring-1 focus:ring-stone-600 transition-colors"
-                  placeholder="+1 (555) 123-4567"
+                  placeholder="Your phone number"
                 />
-                {errors.phone && (
-                  <p className="text-red-600 text-sm mt-2">{errors.phone}</p>
+                {errors.phoneNumber && (
+                  <p className="text-red-600 text-sm mt-2">
+                    {errors.phoneNumber}
+                  </p>
                 )}
               </div>
             </div>

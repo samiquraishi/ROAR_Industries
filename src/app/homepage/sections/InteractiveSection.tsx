@@ -1,22 +1,29 @@
 "use client";
 
 import { FC, useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 import { Minimize, Play } from "lucide-react";
 
 const InteractiveSection: FC = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  const cursorX = useMotionValue(0);
+  const cursorY = useMotionValue(0);
+  const springX = useSpring(cursorX, { damping: 25, stiffness: 200 });
+  const springY = useSpring(cursorY, { damping: 25, stiffness: 200 });
+
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       if (sectionRef.current && isHovering) {
-        setMousePosition({
-          x: event.clientX,
-          y: event.clientY,
-        });
+        cursorX.set(event.clientX + 20);
+        cursorY.set(event.clientY - 20);
       }
     };
 
@@ -27,7 +34,7 @@ const InteractiveSection: FC = () => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [isHovering]);
+  }, [isHovering, cursorX, cursorY]);
 
   const handleClick = () => {
     console.log("Interactive section clicked!");
@@ -36,8 +43,10 @@ const InteractiveSection: FC = () => {
     }
   };
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (e: React.MouseEvent) => {
     console.log("Mouse entered interactive section");
+    cursorX.set(e.clientX + 20);
+    cursorY.set(e.clientY - 20);
     setIsHovering(true);
   };
 
@@ -62,23 +71,14 @@ const InteractiveSection: FC = () => {
         <AnimatePresence>
           {isHovering && (
             <motion.div
-              // Apply the blend mode directly to the animated element
               className="fixed pointer-events-none z-50 mix-blend-difference"
               initial={{ opacity: 0, scale: 0 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                left: mousePosition.x + 20,
-                top: mousePosition.y - 20,
-              }}
+              animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
-              transition={{
-                duration: 0.3,
-                ease: "easeOut",
-                left: { type: "spring", damping: 25, stiffness: 200 },
-                top: { type: "spring", damping: 25, stiffness: 200 },
-              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               style={{
+                left: springX,
+                top: springY,
                 transform: "translate(-50%, -50%)",
               }}
             >
@@ -121,7 +121,7 @@ const InteractiveSection: FC = () => {
               className="relative w-[95vw] h-[70vh] sm:w-[90vw] sm:h-[60vh] md:w-[80vw] lg:w-[70vw] lg:h-[65vh] xl:w-[60vw] xl:h-[70vh] max-w-[1600px] max-h-[90vh] z-10 rounded-lg overflow-hidden p-4 sm:p-6 md:p-8"
             >
               <video
-                src="/videos/ROAR-exp.mp4"
+                src="/assets/videos/ROAR-exp.mp4"
                 className="w-full h-full object-contain"
                 loop
                 autoPlay

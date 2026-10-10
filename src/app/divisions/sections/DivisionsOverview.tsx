@@ -5,9 +5,6 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Check } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import devintLogo from "@/assets/images/devintlogo.png";
-import irisLogo from "@/assets/images/irislogo.png";
-import bionicLogo from "@/assets/images/bioniclogo.png";
 
 // Division Data (Unchanged)
 const divisions = [
@@ -16,7 +13,7 @@ const divisions = [
     tagline: "Engineering the Future of Growth",
     description:
       "Technology solutions that power business transformation. From web development to AI integration, we build the digital infrastructure your business needs to scale efficiently and stay competitive in the digital age.",
-    logo: devintLogo,
+    logo: "/assets/images/devintlogo.png",
     ctaText: "Get Tech Consultation",
     ctaPath: "/divisions/devint",
     services: [
@@ -33,7 +30,7 @@ const divisions = [
     tagline: "We Turn Stories Into Motion",
     description:
       "Cinematic storytelling and visual content that captivates audiences. From concept to final cut, we bring your brand narrative to life through compelling visuals that resonate and inspire action.",
-    logo: irisLogo,
+    logo: "/assets/images/irislogo.png",
     ctaText: "Create With IRIS",
     ctaPath: "/divisions/iris",
     services: [
@@ -50,7 +47,7 @@ const divisions = [
     tagline: "Where Brands Come Alive",
     description:
       "Strategic brand management and marketing that drives growth. We amplify your brand presence and connect you with your ideal customers through data-driven strategies and creative campaigns.",
-    logo: bionicLogo,
+    logo: "/assets/images/bioniclogo.png",
     ctaText: "Amplify With BIONIC",
     ctaPath: "/divisions/bionic",
     services: [
