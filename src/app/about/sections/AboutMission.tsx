@@ -28,7 +28,7 @@ const AboutMission: FC = () => {
                 playsInline
                 className="w-full h-auto object-contain"
               >
-                <source src="/videos/about.mp4" type="video/mp4" />
+                <source src="/assets/videos/about.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

@@ -1,61 +1,36 @@
 "use client";
 
 import { FC } from "react";
-
 import { motion } from "framer-motion";
-
 import { ArrowUpRight } from "lucide-react";
-
 import Link from "next/link";
-
 import Image from "next/image";
-
-import devintLogo from "@/assets/images/devintlogo.png";
-
-import irisLogo from "@/assets/images/irislogo.png";
-
-import bionicLogo from "@/assets/images/bioniclogo.png";
 
 const DivisionsIntegration: FC = () => {
   const divisions = [
     {
       name: "DEVINT",
-
       tagline: "Engineering the Future of Growth",
-
-      logo: devintLogo,
-
+      logo: "/assets/images/devintlogo.png",
       ctaText: "Get Tech Consultation",
-
       ctaPath: "/divisions/devint",
     },
-
     {
       name: "IRIS STUDIOS",
-
       tagline: "We Turn Stories Into Motion",
-
-      logo: irisLogo,
-
+      logo: "/assets/images/irislogo.png",
       ctaText: "Create With IRIS",
-
       ctaPath: "/divisions/iris",
     },
-
     {
       name: "BIONIC MEDIA",
-
       tagline: "Where Brands Come Alive",
-
-      logo: bionicLogo,
-
+      logo: "/assets/images/bioniclogo.png",
       ctaText: "Amplify With BIONIC",
-
       ctaPath: "/divisions/bionic",
     },
   ];
 
-  // Variants for staggering the grid items
 
   const gridVariants = {
     hidden: { opacity: 1 },
@@ -64,14 +39,12 @@ const DivisionsIntegration: FC = () => {
       opacity: 1,
 
       transition: {
-        staggerChildren: 0.2, // Each child will animate 0.2s after the previous
+        staggerChildren: 0.2, 
 
-        delayChildren: 0.8, // Wait for the timeline to draw
+        delayChildren: 0.8, 
       },
     },
   };
-
-  // Variants for each item in the grid
 
   const itemVariants = {
     hidden: { opacity: 0, y: -20 },

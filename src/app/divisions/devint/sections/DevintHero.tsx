@@ -11,21 +11,17 @@ const DevintHero: FC = () => {
         muted
         loop
         playsInline
+        preload="auto"
         className="fixed top-0 left-0 w-full h-screen object-cover -z-50"
       >
-        <source src="/videos/Devint.mp4" type="video/mp4" />
+        <source src="/assets/videos/Devint.mp4" type="video/mp4" />
       </video>
 
-      {/* CHANGE 1: 
-        - Changed bg-stone-950 to bg-white
-        - Changed mix-blend-darken to mix-blend-lighten
-      */}
       <div className="absolute top-0 left-0 right-0 z-10 pt-64 bg-white mix-blend-lighten">
         <h1
           className="
             pt-24 font-extrabold 
             leading-[0.69]
-           
           "
         >
           <span

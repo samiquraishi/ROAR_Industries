@@ -4,9 +4,6 @@ import { FC, useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import image1 from "@/assets/images/devint.jpg";
-import image2 from "@/assets/images/iris.jpg";
-import image3 from "@/assets/images/bionic.jpg";
 import Image from "next/image";
 
 // --- Domain Data ---
@@ -16,8 +13,8 @@ const domains = [
     tagline: "Engineering the Future of Growth",
     quote:
       "Technology solutions that power business transformation. From web development to AI integration, we build the digital infrastructure your business needs to scale efficiently and stay competitive.",
-    image: image1,
-    video: "/videos/DEVINT_homepage.mp4",
+    image: "/assets/images/devint.jpg",
+    video: "/assets/videos/DEVINT_homepage.mp4",
     imagePositionY: 0.2,
     ctaText: "Get Tech Consultation",
     ctaPath: "/divisions/devint",
@@ -27,8 +24,8 @@ const domains = [
     tagline: "We Turn Stories Into Motion",
     quote:
       "Cinematic storytelling and visual content that captivates audiences. From concept to final cut, we bring your brand narrative to life through compelling visuals that resonate and inspire action.",
-    image: image2,
-    video: "/videos/IRIS_homepage.mp4",
+    image: "/assets/images/iris.jpg",
+    video: "/assets/videos/IRIS_homepage.mp4",
     imagePositionY: 0.1,
     ctaText: "Create With IRIS",
     ctaPath: "/divisions/iris",
@@ -38,8 +35,8 @@ const domains = [
     tagline: "Where Brands Come Alive",
     quote:
       "Strategic brand management and marketing that drives growth. We amplify your brand presence and connect you with your ideal customers through data-driven strategies and creative campaigns.",
-    image: image3,
-    video: "/videos/BIONIC_homepage.mp4",
+    image: "/assets/images/bionic.jpg",
+    video: "/assets/videos/BIONIC_homepage.mp4",
     imagePositionY: 0.55,
     ctaText: "Amplify With BIONIC",
     ctaPath: "/divisions/bionic",
@@ -203,7 +200,7 @@ const Domain: FC = () => {
           {domains.map((domain) => (
             <div
               key={domain.name}
-              className="grid grid-cols-2 overflow-hidden" // No gap here
+              className="grid grid-cols-2 gap-2 overflow-hidden" // No gap here
             >
               {/* Left Column - Image */}
               <div className="relative aspect-[1080/1444]">
@@ -268,6 +265,7 @@ const Domain: FC = () => {
                     videoRefs.current[index] = el;
                   }}
                   src={domain.video}
+                  preload="none"
                   muted
                   loop
                   className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out rounded-lg"
